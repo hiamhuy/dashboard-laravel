@@ -5,8 +5,8 @@
     </div>
     <div class="container">
         <div class="logo">
-            <img class="logo-big" src="{{ asset('storage/logos/logo.png') }}" alt="" />
-            <img class="logo-mini" src="{{ asset('storage/logos/logo-mini.png') }}" alt="" />
+            <img class="logo-big" src="{{ asset('storage/logo/logo.png') }}" alt="" />
+            <img class="logo-mini" src="{{ asset('storage/logo/logo-mini.png') }}" alt="" />
         </div>
         <div class="nav-links">
             <div class="wrapper">
