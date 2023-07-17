@@ -1,17 +1,22 @@
 @section('title')
-Home
-@endsection
-@section('page-id')
-home
+Post type
 @endsection
 
+@section('page-id')
+post_type
+@endsection
 
 @section('main')
-
     <div class="container">
-        <h1>Đây là trang home đấy!</h1>
-    </div>
+        
+        <h1>Đây ở post type</h1>
 
+    </div>
+ 
 @endsection
 
 @include('layouts.app')
+
+
+
+
