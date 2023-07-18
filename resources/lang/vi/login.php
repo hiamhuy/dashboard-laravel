@@ -13,9 +13,14 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    // 'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'login' => 'Đăng nhập',
+    'register' => 'Đăng ký',
+    'email_address' => 'Email',
+    'remember_me' => 'Ghi nhớ',
+    'forgot_password' => 'Quên mất khẩu?',
+    'name' => 'Tên',
+    'password' => 'Mật khẩu',
+    'confirm_password' => 'Nhập lại mật khẩu',
+
 
 ];
