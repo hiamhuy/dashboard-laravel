@@ -10,6 +10,7 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
 </head>
 
@@ -144,8 +145,12 @@
                 </div>
             </div>
         </div>
-
+        
     </div>
+    {{-- <div class="alert alert-danger" role="alert">
+        A simple danger alert—check it out!
+      </div> --}}
+    <script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 
