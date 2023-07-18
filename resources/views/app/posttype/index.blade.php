@@ -15,7 +15,7 @@ post_type
  
 @endsection
 
-@include('layouts.app')
+@include('app.layouts.app')
 
 
 

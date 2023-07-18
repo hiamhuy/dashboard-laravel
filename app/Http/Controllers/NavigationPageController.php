@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PosttypeController extends Controller
+class NavigationPageController extends Controller
 {
     //
     public function index(){
-        return view('posttype.index');
+        return view('navigation-page.index');
     }
 }

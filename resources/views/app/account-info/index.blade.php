@@ -9,9 +9,9 @@ home
 @section('main')
 
     <div class="container">
-        <h1>Đây là trang home đấy!</h1>
+        <h1>Đây là account info đấy!</h1>
     </div>
 
 @endsection
 
-@include('layouts.app')
+@include('app.layouts.app')

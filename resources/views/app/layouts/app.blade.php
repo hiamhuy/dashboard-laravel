@@ -13,8 +13,8 @@
 <body>
     <div id=@yield('page-id')>
 
-        @include('shared.sidebar.sidebar')
-        @include('shared.header.header')
+        @include('app.shared.sidebar.sidebar')
+        @include('app.shared.header.header')
 
         <main id="main">
             @yield('main')

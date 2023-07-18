@@ -11,25 +11,25 @@
         <div class="nav-links">
             <div class="wrapper">
                 <ul class="item-link">
-                    <li class="{{ request()->is('/')?'active':'' }}">
+                    <li class="{{ request()->is('dashboard')?'active':'' }}">
                         <div class="name-link">
-                            <a href="/">
+                            <a href="/dashboard">
                                 <span><i class="fa-solid fa-house"></i></span>
                                 <span class="text">Home</span>
                             </a>
                         </div>
                     </li>
-                     <li class="{{ request()->is('posttype')?'active':'' }}">
+                     <li class="{{ request()->is('dashboard/posttype')?'active':'' }}">
                         <div class="name-link">
-                            <a href="posttype">
+                            <a href="/dashboard/posttype">
                                 <span><i class="fa-brands fa-medium"></i></span>
                                 <span class="text">Post type</span>
                             </a>
                         </div>
                     </li>
-                     <li class="{{ request()->is('post')?'active':'' }}">
+                     <li class="{{ request()->is('dashboard/post')?'active':'' }}">
                         <div class="name-link">
-                            <a href="post">
+                            <a href="/dashboard/post">
                                 <span><i class="fa-regular fa-images"></i></span>
                                 <span class="text">Post</span>
                             </a>

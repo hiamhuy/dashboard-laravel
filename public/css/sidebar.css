@@ -205,6 +205,10 @@ a {
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
+#sidebar .item-link li .name-link a {
+    width: 90%;
+    height: 100%;
+}
 #sidebar .item-link li .name-link a i {
     margin-right: 10px;
 }
