@@ -1,0 +1,54 @@
+.object-cover img {
+    height: 100%;
+    object-fit: cover;
+}
+.form-avatar .avatar {
+    width: 300px;
+    background: transparent;
+    border-radius: 50%;
+    margin: auto;
+    aspect-ratio: 1/1;
+    box-shadow: 1px 10px 16px 11px rgba(157, 157, 157, 0.3);
+}
+.form-avatar .avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+}
+.form-avatar input[type="file"] {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+.fm-p {
+    position: relative;
+    width: 100%;
+}
+.fm-pass .fm-p i {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    margin: auto;
+    cursor: pointer;
+}
+.fm-pass .fm-p input#password {
+    padding-right: 35px;
+}
+.fm-pass .fm-b {
+    padding: 0px 0px 0px 10px;
+}
+.fm-pass .fm-b .btn-changepass {
+    height: 36px;
+    font-size: 16px;
+}
+@media screen and (max-width: 992px) {
+    .form-avatar .avatar {
+        width: 200px;
+    }
+}
+@media screen and (max-width: 552px) {
+    .form-avatar .avatar {
+        width: 100%;
+    }
+}

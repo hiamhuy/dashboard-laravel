@@ -27,8 +27,7 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
     });
 
     Route::get('/account-info', [AccountInfoController::class, 'index'])->name('account-info');
+    Route::post('/account-info/edit/{id}', [AccountInfoController::class, 'edit'])->name('edit');
   
 });
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

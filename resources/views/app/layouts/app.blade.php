@@ -11,6 +11,7 @@
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/content.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id=@yield('page-id')>
@@ -27,6 +28,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <script type="text/javascript" src="{{ asset('js/sidebar.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/content.js') }}"></script>
     </div>
 </body>
 </html>

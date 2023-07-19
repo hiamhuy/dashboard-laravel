@@ -5,8 +5,14 @@
                 <div class="name">Hi, {{ Auth::user()->name }}
                 </div>
                 <div class="thumb">
-                    <img src="{{ asset('storage/user/admin.png') }}"
+                    @if(Auth::user()->avatar != null || Auth::user()->avatar != '')
+                        <img src="{{ asset('storage/user/'.Auth::user()->avatar) }}"
                         alt="" />
+                    @else
+                        <img src="{{ asset('storage/user/admin.png') }}"
+                        alt="" />
+                    @endif
+                  
                 </div>
             </div>
             <ul class="action">
