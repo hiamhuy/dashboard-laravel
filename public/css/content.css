@@ -1,3 +1,55 @@
+.toast {
+    background-color: #030303;
+}
+.toast-success {
+    background-color: #51a351;
+}
+.toast-error {
+    background-color: #bd362f;
+}
+.toast-info {
+    background-color: #2f96b4;
+}
+.toast-warning {
+    background-color: #f89406;
+}
+.toast-top-center {
+    top: 0;
+    right: 0;
+    width: 100%;
+}
+.toast-bottom-center {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+.toast-top-full-width {
+    top: 0;
+    right: 0;
+    width: 100%;
+}
+.toast-bottom-full-width {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+.toast-top-left {
+    top: 12px;
+    left: 12px;
+}
+.toast-top-right {
+    top: 12px;
+    right: 12px;
+}
+.toast-bottom-right {
+    right: 12px;
+    bottom: 12px;
+}
+.toast-bottom-left {
+    bottom: 12px;
+    left: 12px;
+}
+
 .object-cover img {
     height: 100%;
     object-fit: cover;

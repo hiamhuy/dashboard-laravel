@@ -9,7 +9,19 @@ post_type
 @section('main')
     <div class="container">
         
-        <h1>Đây ở post type</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Kiểu bài đăng</li>
+            </ol>
+        </nav>
+
+        <div class="card">
+            <div class="card-body">
+
+            </div>
+        </div>
+
 
     </div>
  

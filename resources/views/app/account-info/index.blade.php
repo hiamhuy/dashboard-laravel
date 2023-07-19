@@ -85,7 +85,6 @@ account-info
             </div>
         </div>
     </div>
-
 @endsection
 
 @include('app.layouts.app')

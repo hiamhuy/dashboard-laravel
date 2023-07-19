@@ -27,6 +27,6 @@ class AccountInfoController extends Controller
             $data->avatar = $request->file('avatar')->getClientOriginalName();
             $data->save();
         }
-        return redirect(route('account-info'))->with('success', 'Update Successfully!');
+        return redirect(route('account-info'))->with('success', 'Cập nhật thành công!');
     }
 }
