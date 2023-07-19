@@ -94,6 +94,18 @@
     height: 36px;
     font-size: 16px;
 }
+.f-search {
+    width: 100%;
+    position: relative;
+}
+.f-search input[type="search"] {
+    padding-left: 30px;
+}
+.f-search i {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+}
 @media screen and (max-width: 992px) {
     .form-avatar .avatar {
         width: 200px;

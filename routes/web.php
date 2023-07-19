@@ -20,6 +20,14 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
 
     Route::prefix('/posttype')->group(function(){
         Route::get('/', [PosttypeController::class,'index'])->name('posttype');
+
+        Route::get('/create/0', [PosttypeController::class,'create'])->name('posttype-create');
+        Route::post('/insert', [PosttypeController::class,'insert']);
+        
+        Route::get('/edit/{id}', [PosttypeController::class,'edit'])->name('posttype-edit');
+        Route::post('/update/{id}', [PosttypeController::class,'update']);
+
+        Route::post('/delete/{id}', [PosttypeController::class,'delete'])->name('delete');
     });
 
     Route::prefix('/post')->group(function(){
