@@ -15,15 +15,15 @@
                         <div class="name-link">
                             <a href="/dashboard">
                                 <span><i class="fa-solid fa-house"></i></span>
-                                <span class="text">Home</span>
+                                <span class="text">Trang chủ</span>
                             </a>
                         </div>
                     </li>
-                     <li class="{{ request()->is('dashboard/posttype')?'active':'' }}">
+                     <li class="{{ request()->is('dashboard/posttype*')?'active':'' }}">
                         <div class="name-link">
                             <a href="/dashboard/posttype">
                                 <span><i class="fa-brands fa-medium"></i></span>
-                                <span class="text">Post type</span>
+                                <span class="text">Loại bài đăng</span>
                             </a>
                         </div>
                     </li>
@@ -31,7 +31,7 @@
                         <div class="name-link">
                             <a href="/dashboard/post">
                                 <span><i class="fa-regular fa-images"></i></span>
-                                <span class="text">Post</span>
+                                <span class="text">Đăng bài</span>
                             </a>
                         </div>
                     </li>

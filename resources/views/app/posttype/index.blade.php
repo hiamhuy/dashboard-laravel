@@ -1,5 +1,5 @@
 @section('title')
-Post type
+Loại bài đăng
 @endsection
 
 @section('page-id')
@@ -11,7 +11,7 @@ post_type
         
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+              <li class="breadcrumb-item"><a href="/dashboard">Trang chủ</a></li>
               <li class="breadcrumb-item active" aria-current="page">Kiểu bài đăng</li>
             </ol>
         </nav>
@@ -20,7 +20,7 @@ post_type
             <div class="card-body">
                 <div class="row">
                     <div class="col-6 d-flex justify-content-start">
-                        <form action="/" method="POST">
+                        <form action="/dashboard/posttype" method="GET">
                             <div class="f-search">
                                 <input type="search" name="searchData" class="form-control" id="search-table" placeholder="enter search...">
                                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -34,7 +34,7 @@ post_type
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col">
+                    <div class="col-12">
                         <table class="table">
                             <thead>
                               <tr>
@@ -46,48 +46,45 @@ post_type
                               </tr>
                             </thead>
                             <tbody>
-                                @foreach( $data as $val)
-                                <tr>
-                                    <th style="width:60px" scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{ $val->name }}</td>
-                                    <td style="width:100px">
-                                        @if($val->isActive == 1)
-                                        <span class="badge bg-primary">Hiển thị</span>
-                                        @else
-                                        <span class="badge bg-secondary">Ẩn</span>
-                                        @endif
-                                    </td>
-                                    <td style="width:150px">{{ $val->created_at->format('d/m/Y')}}</td>
-                                    <td style="width:120px">
-                                        <a href="./posttype/edit/{{ $val->id }}">Sửa</a> |
-                                        <a href="{{ route('delete', $val->id) }}" data-confirm-delete="true">Xóa</a>
-                                    </td>
-                                </tr>
-                              @endforeach
+                              @if($data->count() > 0)
+                                  @foreach( $data as $index => $val)
+                                    <tr>
+                                        <th style="width:60px" scope="row">{{ $index + $data->firstItem() }}</th>
+                                        <td>{{ $val->name }}</td>
+                                        <td style="width:100px">
+                                            @if($val->isActive == 1)
+                                            <span class="badge bg-primary">Hiển thị</span>
+                                            @else
+                                            <span class="badge bg-secondary">Ẩn</span>
+                                            @endif
+                                        </td>
+                                        <td style="width:150px">{{ $val->created_at->format('d/m/Y')}}</td>
+                                        <td style="width:120px">
+                                            <a href="{{ route('posttype.edit', $val->id) }}">Sửa</a> |
+                                            <a href="{{ route('posttype.delete', $val->id) }}" data-confirm-delete="true">Xóa</a>
+                                        </td>
+                                      </tr>
+                                  @endforeach
+
+                              @else
+                                  <tr>
+                                      <td colspan="10">Không có dữ liệu ...</td> 
+                                  </tr>
+                              @endif
+
                             </tbody>
                           </table>
                     </div>
-                </div>
-                <div class="row ">
-                    <div class="col">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination d-flex justify-content-end">
-                              <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                  <span aria-hidden="true">&laquo;</span>
-                                </a>
-                              </li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                  <span aria-hidden="true">&raquo;</span>
-                                </a>
-                              </li>
-                            </ul>
-                          </nav>
-                    </div>
+                    <div class="col-12">
+                        <nav class="d-flex justify-content-end align-items-center">
+
+                          @if($data->count() > 0)
+                            <div class="fw-bold fs-6">Tổng: {{$data->count().' / '. $data->total() }} bản ghi</div>
+                            <div class="p-3">{{ $data->links() }}</div>
+                          @endif
+                         
+                        </nav>
+                  </div>
                 </div>
             </div>
         </div>

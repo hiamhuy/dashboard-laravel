@@ -21,20 +21,28 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
     Route::prefix('/posttype')->group(function(){
         Route::get('/', [PosttypeController::class,'index'])->name('posttype');
 
-        Route::get('/create/0', [PosttypeController::class,'create'])->name('posttype-create');
+        Route::get('/create/0', [PosttypeController::class,'create'])->name('posttype.create');
         Route::post('/insert', [PosttypeController::class,'insert']);
         
-        Route::get('/edit/{id}', [PosttypeController::class,'edit'])->name('posttype-edit');
+        Route::get('/edit/{id}', [PosttypeController::class,'edit'])->name('posttype.edit');
         Route::post('/update/{id}', [PosttypeController::class,'update']);
 
-        Route::delete('/delete/{id}', [PosttypeController::class,'delete'])->name('delete');
+        Route::delete('/delete/{id}', [PosttypeController::class,'delete'])->name('posttype.delete');
     });
 
     Route::prefix('/post')->group(function(){
         Route::get('/', [PostController::class,'index'])->name('post');
+
+        Route::get('/create/0', [PostController::class,'create'])->name('post.create');
+        Route::post('/insert', [PostController::class,'insert']);
+        
+        Route::get('/edit/{id}', [PostController::class,'edit'])->name('post.edit');
+        Route::post('/update/{id}', [PostController::class,'update']);
+
+        Route::delete('/delete/{id}', [PostController::class,'delete'])->name('post.delete');
     });
 
-    Route::get('/account-info', [AccountInfoController::class, 'index'])->name('account-info');
+    Route::get('/account-info', [AccountInfoController::class, 'index'])->name('account.info');
     Route::post('/account-info/edit/{id}', [AccountInfoController::class, 'edit'])->name('edit');
   
 });

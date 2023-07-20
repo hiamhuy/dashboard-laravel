@@ -1,5 +1,6 @@
 const file = document.getElementById("avatar");
 const image_preview = document.querySelector("#imgpreview");
+
 if (file != null && file != undefined) {
     file.addEventListener("change", (e) => {
         if (e.target.files && e.target.files.length > 0) {
@@ -11,6 +12,25 @@ if (file != null && file != undefined) {
                 const reader = new FileReader();
                 reader.addEventListener("load", (e) => {
                     image_preview.src = e.target.result;
+                });
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        }
+    });
+}
+const image = document.getElementById("image");
+const thumbpreview = document.querySelector("#thumbpreview");
+if (image != null && thumbpreview != undefined) {
+    image.addEventListener("change", (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+            const getSizeImage = e.target.files[0].size;
+            if (getSizeImage > 1024 * 1024) {
+                alert("Chỉ cho phép tải tệp tin nhỏ hơn 1MB");
+            } else {
+                var nameFile = e.target.files[0].name;
+                const reader = new FileReader();
+                reader.addEventListener("load", (e) => {
+                    thumbpreview.src = e.target.result;
                 });
                 reader.readAsDataURL(e.target.files[0]);
             }

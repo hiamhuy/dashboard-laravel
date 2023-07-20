@@ -28,6 +28,6 @@ class AccountInfoController extends Controller
             $data->save();
         }
         toast('Chỉnh sửa thành công!', 'success');
-        return redirect(route('account-info'));
+        return redirect(route('account.info'));
     }
 }

@@ -10,9 +10,13 @@ use RealRashid\SweetAlert\Facades\Alert;
 class PostTypeController extends Controller
 {
     //
-    public function index(){
-        $data = typepost::all();
-
+    public function index(Request $request){
+        if($request->has('searchData')){
+            $data = typepost::where('name','LIKE','%'.$request->searchData.'%')->get();
+        }else{
+            $data = typepost::orderBy('id')->paginate(10);
+        }
+       
         $title = 'Xóa bản ghi!';
         $text = "Bạn có chắc chắn muốn xóa bản ghi này?";
         confirmDelete($title, $text);

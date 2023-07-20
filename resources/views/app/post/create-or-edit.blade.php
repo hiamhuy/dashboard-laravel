@@ -1,5 +1,5 @@
 @section('title')
-Loại bài đăng
+Đăng bài
 @endsection
 
 @section('page-id')
@@ -11,7 +11,7 @@ post_type
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/dashboard">Trang chủ</a></li>
-              <li class="breadcrumb-item"><a href="/dashboard/posttype">Danh sách</a></li>
+              <li class="breadcrumb-item"><a href="/dashboard/post">Danh sách</a></li>
               <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
             </ol>
         </nav>
@@ -21,7 +21,7 @@ post_type
                 <div class="row">
 
                     @if($data != null)
-                        <form action="/dashboard/posttype/update/{{$data->id}}" method="post" enctype="multipart/form-data">
+                        <form action="/dashboard/post/update/{{$data->id}}" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="mb-3">
                                     <label for="nameEdit" class="form-label">Tên loại</label>
@@ -48,23 +48,50 @@ post_type
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa-regular fa-floppy-disk"></i> Lưu
                                     </button>
-                                    <a href="/dashboard/posttype" class="btn btn-secondary">
+                                    <a href="/dashboard/post" class="btn btn-secondary">
                                         <i class="fa-solid fa-chevron-left"></i> Trở lại
                                     </a>
                                 </div>                
                         </form>
                     @else
-                        <form action="/dashboard/posttype/insert" method="post" enctype="multipart/form-data">
+                        <form action="/dashboard/post/insert" method="post" enctype="multipart/form-data">
                             @csrf
+
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Tên loại</label>
+                                    <div class="thumb object-contain"><img id="thumbpreview" src="{{ asset('/assets/no-image.jpg') }}" alt=""></div>
+                                    <input class="form-control mt-3" type="file" name="image" id="image" accept="image/*,.pdf">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Tên bài viết</label>
                                     <input type="text" class="form-control" name="name" id="name">
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Tiêu đề</label>
+                                    <input type="text" class="form-control" name="title" id="title">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="content" class="form-label">Nội dung</label>
+                                    <textarea name="content" class="form-control" id="content" cols="30" rows="10"></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="type" class="form-label">Loại bài viết</label>
+                                    <select class="form-select" name="type">
+                                        <option value="0" selected>Chọn...</option>
+                                        @foreach($type as $value)
+                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        @endforeach
+                                      </select>
+                                </div>
+
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa-solid fa-plus"></i> Thêm
                                     </button>
-                                    <a href="/dashboard/posttype" class="btn btn-secondary">
+                                    <a href="/dashboard/post" class="btn btn-secondary">
                                         <i class="fa-solid fa-chevron-left"></i> Trở lại
                                     </a>
                                 </div>                
