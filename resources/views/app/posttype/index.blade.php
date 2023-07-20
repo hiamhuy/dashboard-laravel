@@ -60,7 +60,7 @@ post_type
                                     <td style="width:150px">{{ $val->created_at->format('d/m/Y')}}</td>
                                     <td style="width:120px">
                                         <a href="./posttype/edit/{{ $val->id }}">Sửa</a> |
-                                        <a href="./posttype/delete/{{ $val->id }}">Xóa</a>
+                                        <a href="{{ route('delete', $val->id) }}" data-confirm-delete="true">Xóa</a>
                                     </td>
                                 </tr>
                               @endforeach

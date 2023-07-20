@@ -27,7 +27,7 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
         Route::get('/edit/{id}', [PosttypeController::class,'edit'])->name('posttype-edit');
         Route::post('/update/{id}', [PosttypeController::class,'update']);
 
-        Route::post('/delete/{id}', [PosttypeController::class,'delete'])->name('delete');
+        Route::delete('/delete/{id}', [PosttypeController::class,'delete'])->name('delete');
     });
 
     Route::prefix('/post')->group(function(){
