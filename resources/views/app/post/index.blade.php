@@ -22,7 +22,7 @@ post
 
                 <div class="row">
                     <div class="col-6 d-flex justify-content-start">
-                        <form action="/dashboard/posttype" method="GET">
+                        <form action="/dashboard/post" method="GET">
                             <div class="f-search">
                                 <input type="search" name="searchData" class="form-control" id="search-table" placeholder="enter search...">
                                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -56,17 +56,27 @@ post
                                         <tr>
                                             <th style="width:60px" scope="row">{{ $index + $data->firstItem() }}</th>
                                             <td style="width:120px">
-                                                <div class="object-cover">
-                                                    <img src="" alt="">
+                                                <div class="thumb-wrapper object-cover">
+                                                    @if($val->image != null)
+                                                        <img src="{{ asset('storage/post/'.$val->image) }}" alt="">
+                                                    @else
+                                                        <img src="{{ asset('assets/no-image.jpg') }}" alt="">
+                                                    @endif
                                                 </div>
                                             </td>
                                             <td style="width:200px">{{ $val->name }}</td>
-                                            <td>{{ $val->content }}</td>
-                                            <td style="width:150px">{{ $val->type }}</td>
+                                            <td>{!! substr($val->content,0,150).' ...' !!}</td>
+                                            <td style="width:150px">
+                                                @foreach($type as $t)
+                                                    @if($val->type == $t->id)
+                                                        {{ $t->name }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
                                             <td style="width:150px">{{ $val->created_at->format('d/m/Y')}}</td>
                                             <td style="width:120px">
-                                                <a href="./posttype/edit/{{ $val->id }}">Sửa</a> |
-                                                <a href="{{ route('posttype-delete', $val->id) }}" data-confirm-delete="true">Xóa</a>
+                                                <a href="{{ route('post.edit', $val->id) }}">Sửa</a> |
+                                                <a href="{{ route('post.delete', $val->id) }}" data-confirm-delete="true">Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach

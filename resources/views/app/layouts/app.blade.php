@@ -28,6 +28,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
         integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+        <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
 
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script type="text/javascript" src="{{ asset('js/sidebar.js') }}"></script>
@@ -35,6 +37,12 @@
 
         @include('sweetalert::alert')
 
+        <script>
+            const content = document.getElementById('content');
+            if(content != null && content != undefined){
+                CKEDITOR.replace('content');
+            }
+        </script>
     </div>
 
   

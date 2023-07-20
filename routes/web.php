@@ -34,10 +34,10 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
         Route::get('/', [PostController::class,'index'])->name('post');
 
         Route::get('/create/0', [PostController::class,'create'])->name('post.create');
-        Route::post('/insert', [PostController::class,'insert']);
+        Route::post('/insert', [PostController::class,'insert'])->name('post.insert');
         
         Route::get('/edit/{id}', [PostController::class,'edit'])->name('post.edit');
-        Route::post('/update/{id}', [PostController::class,'update']);
+        Route::post('/update/{id}', [PostController::class,'update'])->name('post.update');
 
         Route::delete('/delete/{id}', [PostController::class,'delete'])->name('post.delete');
     });

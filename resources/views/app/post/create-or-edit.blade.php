@@ -21,29 +21,51 @@ post_type
                 <div class="row">
 
                     @if($data != null)
-                        <form action="/dashboard/post/update/{{$data->id}}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('post.update', $data->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="mb-3">
-                                    <label for="nameEdit" class="form-label">Tên loại</label>
-                                    <input type="text" class="form-control" name="nameEdit" id="nameEdit" 
-                                            value="{{ $data->name }}">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="isActive" class="form-label">Active</label>
-                                    <select class="form-select" name="isActive">
-                                        @if($data->isActive == 1)
-                                            <option value="1" selected>Hiển thị</option>
-                                            <option value="2">Ẩn</option>
-                                        @elseif($data->isActive == 2)
-                                            <option value="1">Hiển thị</option>
-                                            <option value="2" selected>Ẩn</option>
+                                    <div class="thumb object-contain">
+                                        @if($data->image != null)
+                                            <img id="thumbpreview" src="{{ asset('storage/post/'.$data->image) }}" alt="">
                                         @else
-                                            <option value="" selected>Chọn...</option>
-                                            <option value="1">Hiển thị</option>
-                                            <option value="2">Ẩn</option>
+                                            <img id="thumbpreview" src="{{ asset('assets/no-image.jpg') }}" alt="">
                                         @endif
-                                      </select>
+                                        
+                                    </div>
+                                    <input class="form-control mt-3" type="file" name="e_image" id="image" accept="image/*,.pdf">
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="e_name" class="form-label">Tên bài viết</label>
+                                    <input type="text" class="form-control" name="e_name" id="name" value="{{ $data->name }}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="e_title" class="form-label">Tiêu đề</label>
+                                    <input type="text" class="form-control" name="e_title" id="title" value="{{ $data->title }}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="e_content" class="form-label">Nội dung</label>
+                                    <textarea name="e_content" class="form-control" id="content" cols="30" rows="10">
+                                        {{ $data->content }}
+                                    </textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="e_type" class="form-label">Loại bài viết</label>
+                                    <select class="form-select" name="e_type">
+                                        @foreach($type as $value)
+                                            @if($data->type == $value->id)
+                                            <option value="{{ $value->id }}" selected>{{ $value->name }}</option>
+                                            @else
+                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa-regular fa-floppy-disk"></i> Lưu
@@ -54,7 +76,7 @@ post_type
                                 </div>                
                         </form>
                     @else
-                        <form action="/dashboard/post/insert" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('post.insert') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                                 <div class="mb-3">

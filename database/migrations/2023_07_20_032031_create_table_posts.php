@@ -18,7 +18,7 @@ class CreateTablePosts extends Migration
             $table->string('image',250);
             $table->string('name');
             $table->string('title');
-            $table->string('content');
+            $table->longText('content');
             $table->integer('type');
             $table->timestamps();
             $table->softDeletes();
