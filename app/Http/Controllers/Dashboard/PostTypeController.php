@@ -12,7 +12,7 @@ class PostTypeController extends Controller
     //
     public function index(Request $request){
         if($request->has('searchData')){
-            $data = typepost::where('name','LIKE','%'.$request->searchData.'%')->get();
+            $data = typepost::where('name','LIKE','%'.$request->searchData.'%')->paginate(10);
         }else{
             $data = typepost::orderBy('id')->paginate(10);
         }

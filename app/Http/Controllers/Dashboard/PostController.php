@@ -13,7 +13,7 @@ class PostController extends Controller
     //
     public function index(Request $request){
         if($request->has('searchData')){
-            $data = Posts::where('name','LIKE','%'.$request->searchData.'%')->get();
+            $data = Posts::where('name','LIKE','%'.$request->searchData.'%')->paginate(5);
         }else{
             $data = Posts::orderBy('created_at')->paginate(5);
         }
@@ -29,7 +29,7 @@ class PostController extends Controller
     }
     public function create(){
         $data = [];
-        $type = typepost::where('isActive','1')->orderBy('id')->paginate(50);
+        $type = typepost::where('isActive','=','1')->orderBy('id')->paginate(50);
         return view('app.post.create-or-edit', compact('data',"type"));
     }
     
@@ -53,7 +53,7 @@ class PostController extends Controller
 
     public function edit($id){
         $data = Posts::find($id);
-        $type = typepost::where('isActive','1')->orderBy('id')->paginate(50);
+        $type = typepost::where('isActive','=','1')->orderBy('id')->paginate(50);
         return view('app.post.create-or-edit', compact('data','type'));
     }
 
