@@ -1,3 +1,4 @@
+@extends('app.layouts.app')
 @section('title')
 Home
 @endsection
@@ -49,9 +50,6 @@ home
                
             </div>
         </div>
-    
     </div>
 
 @endsection
-
-@include('app.layouts.app')
