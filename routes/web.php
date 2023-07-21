@@ -1,18 +1,19 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\NavigationPageController;
-use App\Http\Controllers\Dashboard\LoginController;
 use App\Http\Controllers\Dashboard\PosttypeController;
 use App\Http\Controllers\Dashboard\AccountInfoController;
 
+
 Route::get('/',[NavigationPageController::class,'index'])->name('navigation-page');
 
-Route::get('/login',[LoginController::class,'index']) -> name('login');
-Route::post('/checklogin',[LoginController::class,'checklogin']) -> name('checklogin');
+Route::get('/verify',[RegisterController::class,'verifyUser'])->name('verify.user');
 Route::get('/logout',[LoginController::class,'logout']) -> name('logout');
 
 Route::middleware('auth')->prefix('/dashboard')->group(function() {

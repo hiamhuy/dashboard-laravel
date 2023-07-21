@@ -18,9 +18,11 @@ class AccountInfoController extends Controller
         $data = User::find($id);
         $dataUpdate = array(
             'name' => $request->get('displayname'),
-            'password' => Hash::make($request->get('passwordNew')),
+            'password' => $request->get('passwordNew') ? Hash::make($request->get('passwordNew')): '',
         );
+
         $dataUpdate = array_filter($dataUpdate);
+        
         $data->update($dataUpdate);
         if($request -> hasFile('avatar')){
             $request -> file('avatar')->move('storage/user', $request->file('avatar')->getClientOriginalName());

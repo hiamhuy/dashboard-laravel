@@ -16,5 +16,6 @@ return [
     'failed' => 'Sai thông tin tài khoản hoặc mật khẩu.',
     'password' => 'Mật khẩu không chính xác.',
     'throttle' => 'Bạn đã đăng nhập quá nhiều lần. Vui lòng thử lại sau :giây giây.',
-
+    'notverified' => 'Tài khoản của bạn chưa được xác thực.',
+    'email_exist' => 'Email đã được đăng ký.'
 ];
