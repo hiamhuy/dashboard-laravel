@@ -970,6 +970,48 @@ header hr {
     color: var(--color-background);
 }
 
+.backtotop div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    background-color: #df4c4c;
+    text-align: center;
+    border: 1px solid #df4c4c;
+    border-radius: 4px;
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    will-change: opacity, visibility;
+    z-index: 999;
+}
+.backtotop div i {
+    animation: animation 1s infinite;
+}
+.backtotop.show div:hover {
+    opacity: 1;
+}
+.backtotop.show div {
+    opacity: 0.5;
+    visibility: visible;
+}
+
+@keyframes animation {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-3px);
+    }
+}
+
 /* responsive */
 @media screen and (max-width: 340px) {
     .footer-info {

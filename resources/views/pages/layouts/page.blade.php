@@ -35,6 +35,14 @@
                 @yield('content')
             </main>
             @include('pages.layouts.footer')
+
+			<div class="backtotop">
+				<div class="flexcol">
+					<i class="fa-solid fa-arrow-up"></i> 
+					<span>top</span>
+				</div>
+			</div>
+
             <div class="overlay desktop-hide"></div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>

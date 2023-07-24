@@ -37,3 +37,33 @@ const swiper = new Swiper(".swiper", {
         delay: 3000,
     },
 });
+
+const backtotop = document.querySelector(".backtotop");
+
+window.onscroll = function () {
+    if (
+        document.body.scrollTop > 300 ||
+        document.documentElement.scrollTop > 300
+    ) {
+        backtotop.classList.add("show");
+    } else {
+        if (backtotop.classList.contains("show")) {
+            backtotop.classList.remove("show");
+        }
+        backtotop.classList.remove("show");
+    }
+};
+
+if (backtotop != null && backtotop != undefined) {
+    backtotop.addEventListener("click", function (e) {
+        e.preventDefault();
+        var scrollToTop = window.setInterval(function () {
+            var pos = window.pageYOffset;
+            if (pos > 0) {
+                window.scrollTo(0, pos - 20);
+            } else {
+                window.clearInterval(scrollToTop);
+            }
+        }, 4);
+    });
+}
