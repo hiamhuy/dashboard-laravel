@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSorfDeleteUsers extends Migration
+class CreateCategoryPosts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddSorfDeleteUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
+        Schema::create('category_posts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('isActive')->default(1);
+            $table->integer('created_by');
+            $table->timestamps();
             $table->softDeletes();
         });
     }
@@ -26,8 +30,6 @@ class AddSorfDeleteUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('category_posts');
     }
 }

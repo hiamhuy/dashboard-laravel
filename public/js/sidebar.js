@@ -5,9 +5,20 @@ toggle.addEventListener("click", () => {
     nav.classList.toggle("mini-sidebar");
 });
 
-if (window.innerWidth < 768) {
-    nav.classList.add("mini-sidebar");
-}
+window.onload = () => {
+    if (window.innerWidth < 768) {
+        nav.classList.add("mini-sidebar");
+    } else {
+        nav.classList.remove("mini-sidebar");
+    }
+};
+window.onresize = () => {
+    if (window.innerWidth < 768) {
+        nav.classList.add("mini-sidebar");
+    } else {
+        nav.classList.remove("mini-sidebar");
+    }
+};
 
 //Header
 const action = ".action";

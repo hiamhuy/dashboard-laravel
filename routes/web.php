@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\NavigationPageController;
-use App\Http\Controllers\Dashboard\PosttypeController;
+use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\AccountInfoController;
+use App\Http\Controllers\Page\BlogController;
 
 
 Route::get('/',[NavigationPageController::class,'index'])->name('navigation-page');
@@ -19,16 +20,16 @@ Route::get('/logout',[LoginController::class,'logout']) -> name('logout');
 Route::middleware('auth')->prefix('/dashboard')->group(function() {
     Route::get('/', [HomeController::class,'index'])->name('home');
 
-    Route::prefix('/posttype')->group(function(){
-        Route::get('/', [PosttypeController::class,'index'])->name('posttype');
+    Route::prefix('/category')->group(function(){
+        Route::get('/', [CategoryController::class,'index'])->name('category');
 
-        Route::get('/create/0', [PosttypeController::class,'create'])->name('posttype.create');
-        Route::post('/insert', [PosttypeController::class,'insert']);
+        Route::get('/create/0', [CategoryController::class,'create'])->name('category.create');
+        Route::post('/insert', [CategoryController::class,'insert']);
         
-        Route::get('/edit/{id}', [PosttypeController::class,'edit'])->name('posttype.edit');
-        Route::post('/update/{id}', [PosttypeController::class,'update']);
+        Route::get('/edit/{id}', [CategoryController::class,'edit'])->name('category.edit');
+        Route::post('/update/{id}', [CategoryController::class,'update']);
 
-        Route::delete('/delete/{id}', [PosttypeController::class,'delete'])->name('posttype.delete');
+        Route::delete('/delete/{id}', [CategoryController::class,'delete'])->name('category.delete');
     });
 
     Route::prefix('/post')->group(function(){
@@ -48,3 +49,6 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
   
 });
 Auth::routes();
+
+Route::get('/blog',[BlogController::class,'index']) -> name('blog');
+Route::get('/blog/{slug}',[BlogController::class,'getBlogDetail']) -> name('blog.detail');

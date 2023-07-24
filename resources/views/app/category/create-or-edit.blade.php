@@ -3,7 +3,7 @@ Loại bài đăng
 @endsection
 
 @section('page-id')
-post_type
+category
 @endsection
 
 @section('main')
@@ -11,7 +11,7 @@ post_type
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/dashboard">Trang chủ</a></li>
-              <li class="breadcrumb-item"><a href="/dashboard/posttype">Danh sách</a></li>
+              <li class="breadcrumb-item"><a href="/dashboard/category">Danh sách</a></li>
               <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
             </ol>
         </nav>
@@ -21,7 +21,7 @@ post_type
                 <div class="row">
 
                     @if($data != null)
-                        <form action="/dashboard/posttype/update/{{$data->id}}" method="post" enctype="multipart/form-data">
+                        <form action="/dashboard/category/update/{{$data->id}}" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="mb-3">
                                     <label for="nameEdit" class="form-label">Tên loại</label>
@@ -48,13 +48,13 @@ post_type
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa-regular fa-floppy-disk"></i> Lưu
                                     </button>
-                                    <a href="/dashboard/posttype" class="btn btn-secondary">
+                                    <a href="/dashboard/category" class="btn btn-secondary">
                                         <i class="fa-solid fa-chevron-left"></i> Trở lại
                                     </a>
                                 </div>                
                         </form>
                     @else
-                        <form action="/dashboard/posttype/insert" method="post" enctype="multipart/form-data">
+                        <form action="/dashboard/category/insert" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Tên loại</label>
@@ -64,7 +64,7 @@ post_type
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa-solid fa-plus"></i> Thêm
                                     </button>
-                                    <a href="/dashboard/posttype" class="btn btn-secondary">
+                                    <a href="/dashboard/category" class="btn btn-secondary">
                                         <i class="fa-solid fa-chevron-left"></i> Trở lại
                                     </a>
                                 </div>                

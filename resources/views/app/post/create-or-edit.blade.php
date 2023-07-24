@@ -41,6 +41,11 @@ post_type
                                 </div>
 
                                 <div class="mb-3">
+                                    <label for="e_slug" class="form-label">Slug</label>
+                                    <input type="text" class="form-control" name="e_slug" id="slug" value="{{ $data->slug }}">
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="e_title" class="form-label">Tiêu đề</label>
                                     <input type="text" class="form-control" name="e_title" id="title" value="{{ $data->title }}">
                                 </div>
@@ -87,6 +92,11 @@ post_type
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Tên bài viết</label>
                                     <input type="text" class="form-control" name="name" id="name">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="e_slug" class="form-label">Slug</label>
+                                    <input type="text" class="form-control" name="e_slug" id="slug">
                                 </div>
 
                                 <div class="mb-3">

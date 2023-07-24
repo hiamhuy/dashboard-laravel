@@ -17,9 +17,12 @@ class CreateTablePosts extends Migration
             $table->bigIncrements("id");
             $table->string('image',250);
             $table->string('name');
+            $table->longText('slug');
             $table->string('title');
             $table->longText('content');
-            $table->integer('type');
+            $table->integer('category');
+            $table->integer('status')->default(1);
+            $table->integer('created_by');
             $table->timestamps();
             $table->softDeletes();
         });

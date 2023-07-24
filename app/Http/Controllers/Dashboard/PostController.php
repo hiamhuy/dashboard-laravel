@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Posts;
-use App\Models\typepost;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\CategoryPosts;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -18,7 +19,7 @@ class PostController extends Controller
             $data = Posts::orderBy('created_at')->paginate(5);
         }
 
-        $type = typepost::all();
+        $type = CategoryPosts::all();
        
         $title = 'Xóa bản ghi!';
         $text = "Bạn có chắc chắn muốn xóa bản ghi này?";
@@ -29,7 +30,7 @@ class PostController extends Controller
     }
     public function create(){
         $data = [];
-        $type = typepost::where('isActive','=','1')->orderBy('id')->paginate(50);
+        $type = CategoryPosts::where('isActive','=','1')->orderBy('id')->paginate(50);
         return view('app.post.create-or-edit', compact('data',"type"));
     }
     
@@ -37,6 +38,7 @@ class PostController extends Controller
         $data = Posts::create([
             'image' => '',
             'name' => ($request->get('name'))?$request->get('name'):'',
+            'slug' => Str::slug($request->get('slug')),
             'title' => ($request->get('title'))?$request->get('title'):'',
             'content' => ($request->get('content'))?$request->get('content'):'',
             'type' => $request->get('type')?$request->get('type'):'0',
@@ -53,7 +55,7 @@ class PostController extends Controller
 
     public function edit($id){
         $data = Posts::find($id);
-        $type = typepost::where('isActive','=','1')->orderBy('id')->paginate(50);
+        $type = CategoryPosts::where('isActive','=','1')->orderBy('id')->paginate(50);
         return view('app.post.create-or-edit', compact('data','type'));
     }
 
@@ -61,6 +63,7 @@ class PostController extends Controller
         $data = Posts::find($id);
         $dataUpdate = array(
             'name' => $request->get('e_name')? $request->get('e_name'):'',
+            'slug' => Str::slug($request->get('slug')),
             'title' => $request->get('e_title')?$request->get('e_title'):'',
             'content' => $request->get('e_content')?$request->get('e_content'):'',
             'type' => $request->get('e_type')?$request->get('e_type'):'0',

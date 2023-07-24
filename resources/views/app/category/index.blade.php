@@ -3,7 +3,7 @@ Loại bài đăng
 @endsection
 
 @section('page-id')
-post_type
+category
 @endsection
 
 @section('main')
@@ -20,7 +20,7 @@ post_type
             <div class="card-body">
                 <div class="row">
                     <div class="col-6 d-flex justify-content-start">
-                        <form action="/dashboard/posttype" method="GET">
+                        <form action="/dashboard/category" method="GET">
                             <div class="f-search">
                                 <input type="search" name="searchData" class="form-control" id="search-table" placeholder="enter search...">
                                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -28,7 +28,7 @@ post_type
                         </form>
                     </div>
                     <div class="col-6 d-flex justify-content-end">
-                        <a href="posttype/create/0" class="btn btn-primary">
+                        <a href="category/create/0" class="btn btn-primary">
                             <i class="fa-solid fa-plus"></i> Thêm mới
                         </a>
                     </div>
@@ -60,8 +60,8 @@ post_type
                                         </td>
                                         <td style="width:150px">{{ $val->created_at->format('d/m/Y')}}</td>
                                         <td style="width:120px">
-                                            <a href="{{ route('posttype.edit', $val->id) }}">Sửa</a> |
-                                            <a href="{{ route('posttype.delete', $val->id) }}" data-confirm-delete="true">Xóa</a>
+                                            <a href="{{ route('category.edit', $val->id) }}">Sửa</a> |
+                                            <a href="{{ route('category.delete', $val->id) }}" data-confirm-delete="true">Xóa</a>
                                         </td>
                                       </tr>
                                   @endforeach
