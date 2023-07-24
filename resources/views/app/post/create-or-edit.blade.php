@@ -58,8 +58,8 @@ post_type
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="e_type" class="form-label">Loại bài viết</label>
-                                    <select class="form-select" name="e_type">
+                                    <label for="e_category" class="form-label">Loại bài viết</label>
+                                    <select class="form-select" name="e_category">
                                         @foreach($type as $value)
                                             @if($data->type == $value->id)
                                             <option value="{{ $value->id }}" selected>{{ $value->name }}</option>
@@ -69,6 +69,23 @@ post_type
                                             @endif
                                         @endforeach
                                     </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Trạng thái</label>
+                                    <select class="form-select" name="status">
+                                        @if($data->status == 1)
+                                            <option value="1" selected>Hiển thị</option>
+                                            <option value="2">Ẩn</option>
+                                        @elseif($data->status == 2)
+                                            <option value="1">Hiển thị</option>
+                                            <option value="2" selected>Ẩn</option>
+                                        @else
+                                            <option value="" selected>Chọn...</option>
+                                            <option value="1">Hiển thị</option>
+                                            <option value="2">Ẩn</option>
+                                        @endif
+                                      </select>
                                 </div>
                             
                                 <div class="mb-3">
@@ -95,8 +112,8 @@ post_type
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="e_slug" class="form-label">Slug</label>
-                                    <input type="text" class="form-control" name="e_slug" id="slug">
+                                    <label for="slug" class="form-label">Slug</label>
+                                    <input type="text" class="form-control" name="slug" id="slug">
                                 </div>
 
                                 <div class="mb-3">
@@ -110,8 +127,8 @@ post_type
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="type" class="form-label">Loại bài viết</label>
-                                    <select class="form-select" name="type">
+                                    <label for="category" class="form-label">Loại bài viết</label>
+                                    <select class="form-select" name="category">
                                         <option value="0" selected>Chọn...</option>
                                         @foreach($type as $value)
                                             <option value="{{ $value->id }}">{{ $value->name }}</option>

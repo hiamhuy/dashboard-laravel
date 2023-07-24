@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CategoryPosts;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PostController extends Controller
@@ -41,7 +42,8 @@ class PostController extends Controller
             'slug' => Str::slug($request->get('slug')),
             'title' => ($request->get('title'))?$request->get('title'):'',
             'content' => ($request->get('content'))?$request->get('content'):'',
-            'type' => $request->get('type')?$request->get('type'):'0',
+            'category' => $request->get('category')?$request->get('category'):'0',
+            'created_by' => Auth::user()->id,
         ]);
         if($request -> hasFile('image')){
             $request -> file('image')->move('storage/post', $request->file('image')->getClientOriginalName());
@@ -63,10 +65,12 @@ class PostController extends Controller
         $data = Posts::find($id);
         $dataUpdate = array(
             'name' => $request->get('e_name')? $request->get('e_name'):'',
-            'slug' => Str::slug($request->get('slug')),
+            'slug' => Str::slug($request->get('e_slug')),
             'title' => $request->get('e_title')?$request->get('e_title'):'',
             'content' => $request->get('e_content')?$request->get('e_content'):'',
-            'type' => $request->get('e_type')?$request->get('e_type'):'0',
+            'category' => $request->get('e_category')?$request->get('e_category'):'0',
+            'status' => $request->get('status'),
+            'created_by' => Auth::user()->id,
         );
         if($request -> hasFile('e_image')){
             $request -> file('e_image')->move('storage/post', $request->file('e_image')->getClientOriginalName());

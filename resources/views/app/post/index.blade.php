@@ -43,9 +43,10 @@ post
                               <tr>
                                 <th scope="col" style="width:60px">#</th>
                                 <th scope="col" style="width:120px">Hình ảnh</th>
-                                <th scope="col" style="width:200px">Tên bài viết</th>
-                                <th scope="col">Nội dung</th>
+                                <th scope="col">Tên bài viết</th>
+                                <th scope="col" style="width:200px">Slug</th>
                                 <th scope="col" style="width:150px">Kiểu bài viết</th>
+                                <th scope="col" style="width:100px">Trạng thái</th>
                                 <th scope="col" style="width:150px">Ngày tạo</th>
                                 <th scope="col" style="width:120px">Hành động</th>
                               </tr>
@@ -64,16 +65,28 @@ post
                                                     @endif
                                                 </div>
                                             </td>
-                                            <td style="width:200px">{{ $val->name }}</td>
-                                            <td>{!! substr($val->content,0,150).' ...' !!}</td>
+                                            <td>{{ $val->name }}</td>
+
+                                            <td style="width:200px"> {{ $val->slug }} </td>
+
                                             <td style="width:150px">
                                                 @foreach($type as $t)
-                                                    @if($val->type == $t->id)
+                                                    @if($val->category == $t->id)
                                                         {{ $t->name }}
                                                     @endif
                                                 @endforeach
                                             </td>
+                                            
+                                            <td style="width:100px">
+                                                @if($val->status == 1)
+                                                <span class="badge bg-primary">Hiển thị</span>
+                                                @else
+                                                <span class="badge bg-secondary">Ẩn</span>
+                                                @endif
+                                            </td>
+
                                             <td style="width:150px">{{ $val->created_at->format('d/m/Y')}}</td>
+                                            
                                             <td style="width:120px">
                                                 <a href="{{ route('post.edit', $val->id) }}">Sửa</a> |
                                                 <a href="{{ route('post.delete', $val->id) }}" data-confirm-delete="true">Xóa</a>
