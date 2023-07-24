@@ -41,10 +41,10 @@
             </div>
         </div>
     </div>
-    <div class="form-contact">
+    <div class="form-contact" id="form-contact">
         <div class="container">
             <div class="wrapper">
-                <form action="#" id="form-contact">
+                <form action="#" >
                     <div class="contact">
                         <div class="c-address pb-2">
                             <span><i class="fa-solid fa-location-dot"></i></span>

@@ -8,95 +8,13 @@
         <div class="container">
             <div class="wrapper">
                 <div class="content">
-                    <div class="time-up"><span>26/05/2023 - </span><span>5 Phút trước</span></div>
+                    <div class="time-up"><span>{{ $data->created_at->format('d/m/Y') }} - </span><span>{{ $data->created_at->diffForHumans() }}</span></div>
                     <h1 class="title-content">
-                        <span class="tName-Company">Hachitech Solution </span>cung cấp giải pháp phát triển
-                        phần mềm
+                        <span class="tName-Company">{{ $data->name }}
                     </h1>
-                    <h3 class="article-title">New NFT projects to watch : December 2022</h3>
+                    <h3 class="article-title">{{ $data->title }}</h3>
                     <div class="article-content">
-                        If you’ve read this far and you’re wondering what “web3” is exactly, this is one of
-                        those need-to-knows, and it’s pretty simple. We’ll explain more below, but in short
-                        web3 is the next era of the internet in which blockchain technology will play a
-                        central role.If you’ve read this far and you’re wondering what “web3” is exactly,
-                        this is one of those need-to-knows, and it’s pretty simple. We’ll explain more
-                        below, but in short web3 is the next era of the internet in which blockchain
-                        technology will play a central role.
-                        <br /><br />
-                        If you’ve read this far and you’re wondering what “web3” is exactly, this is one of
-                        those need-to-knows, and it’s pretty simple. We’ll explain more below, but in short
-                        web3 is the next era of the internet in which blockchain technology will play a
-                        central role.
-                        <br /><br />
-                        <img src="./assets/blog-detail.png" alt="" />
-                        <br />
-                        <span
-                            style="
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                text-align: center;
-                            "
-                            >If you’ve read this far and you’re wondering what “web3” is exactly, this is
-                            one of those need-to-knows.
-                        </span>
-                        <br /><br />
-                        If you’ve read this far and you’re wondering what “web3” is exactly, this is one of
-                        those need-to-knows, and it’s pretty simple. We’ll explain more below, but in short
-                        web3 is the next era of the internet in which blockchain technology will play a
-                        central role.If you’ve read this far and you’re wondering what “web3” is exactly,
-                        this is one of those need-to-knows, and it’s pretty simple. We’ll explain more
-                        below, but in short web3 is the next era of the internet in which blockchain
-                        technology will play a central role.
-                        <br /><br />
-                        If you’ve read this far and you’re wondering what “web3” is exactly, this is one of
-                        those need-to-knows, and it’s pretty simple. We’ll explain more below, but in short
-                        web3 is the next era of the internet in which blockchain technology will play a
-                        central role.
-                        <br /><br />
-                        <h4>New NFT projects to watch : December 2022</h4>
-                        <br />
-                        If you’ve read this far and you’re wondering what “web3” is exactly, this is one of
-                        those need-to-knows, and it’s pretty simple. We’ll explain more below, but in short
-                        web3 is the next era of the internet in which blockchain technology will play a
-                        central role.
-                        <br /><br />
-                        If you’ve read this far and you’re wondering what “web3” is exactly, this is one of
-                        those need-to-knows, and it’s pretty simple. We’ll explain more below, but in short
-                        web3 is the next era of the internet in which blockchain technology will play a
-                        central role.
-                        <br /><br />
-                        <img src="./assets/blog-detail2.png" alt="" />
-                        <br /><br />
-                        <h4>New NFT projects to watch : December 2022</h4>
-                        <br />
-                        If you’ve read this far and you’re wondering what “web3” is exactly, this is one of
-                        those need-to-knows, and it’s pretty simple. We’ll explain more below, but in short
-                        web3 is the next era of the internet in which blockchain technology will play a
-                        central role.
-                        <br /><br />
-                        If you’ve read this far and you’re wondering what “web3” is exactly, this is one of
-                        those need-to-knows, and it’s pretty simple. We’ll explain more below, but in short
-                        web3 is the next era of the internet in which blockchain technology will play a
-                        central role.If you’ve read this far and you’re wondering what “web3” is exactly,
-                        this is one of those need-to-knows, and it’s pretty simple. We’ll explain more
-                        below, but in short web3 is the next era of the internet in which blockchain
-                        technology will play a central role.
-                        <br /><br />
-                        <img src="./assets/blog-detail3.png" alt="" />
-                        <br /><br />
-                        If you’ve read this far and you’re wondering what “web3” is exactly, this is one of
-                        those need-to-knows, and it’s pretty simple. We’ll explain more below, but in short
-                        web3 is the next era of the internet in which blockchain technology will play a
-                        central role.If you’ve read this far and you’re wondering what “web3” is exactly,
-                        this is one of those need-to-knows, and it’s pretty simple. We’ll explain more
-                        below, but in short web3 is the next era of the internet in which blockchain
-                        technology will play a central role.
-                        <br /><br />
-                        If you’ve read this far and you’re wondering what “web3” is exactly, this is one of
-                        those need-to-knows, and it’s pretty simple. We’ll explain more below, but in short
-                        web3 is the next era of the internet in which blockchain technology will play a
-                        central role.
+                       {!! $data->content !!}
                     </div>
                     <div class="interacts">
                         <div class="interact-icon">
@@ -264,46 +182,25 @@
             <div class="wrapper">
                 <div class="card-item">
                     <div class="items">
-                        <div class="item">
-                            <div class="thumbnail background-cover">
-                                <img src="./assets/abeginner.png" alt="" />
-                            </div>
-                            <div class="item-content">
-                                <div class="content_info">
-                                    <span class="flag">Blockchanin</span>
-                                    <span class="time">5 min read</span>
+                        @foreach($dataRelatedPosts as $item)
+                            <div class="item">
+                                <div class="thumbnail background-cover">
+                                    <img src="{{ asset('storage/post/'.$item->image) }}" alt="" />
                                 </div>
-                                <div class="title text-hide">
-                                    A beginner's guide to blockchain for engineers
-                                </div>
-                                <div class="content text-hide">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta
-                                    mollitia quam rerum debitis aliquam consequatur enim tempora, sed quasi
-                                    numquam maxime et aspernatur illo, pariatur vel neque. Fuga, nostrum
-                                    aperiam? reiciendis provident fuga?
-                                </div>
-                                <div class="btn-readmore">
-                                    <a href="#"
-                                        >Read more <span><i class="fa-solid fa-chevron-right"></i></span
-                                    ></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail background-cover">
-                                <img src="./assets/secure.png" alt="" />
-                            </div>
-                            <div class="item-content">
-                                <div class="content_info">
-                                    <span class="flag">People</span>
-                                    <span class="time">5 min read</span>
-                                </div>
-                                <div class="title text-hide">How to secure have your crypto wallet</div>
-                                <div class="content text-hide">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta
-                                    mollitia quam rerum debitis aliquam consequatur enim tempora, sed quasi
-                                    numquam maxime et aspernatur illo, pariatur vel neque. Fuga, nostrum
-                                    aperiam? reiciendis provident fuga?
+                                <div class="item-content">
+                                    <div class="content_info">
+                                        <span class="flag">{{ $item->name_category }}</span>
+                                        <span class="time">{{ $item->created_at->diffForHumans() }}</span>
+                                    </div>
+                                    <h2 class="title text-hide">
+                                        {{ $item->name }}
+                                    </h2>
+                                    <div class="content text-hide">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta
+                                        mollitia quam rerum debitis aliquam consequatur enim tempora, sed quasi
+                                        numquam maxime et aspernatur illo, pariatur vel neque. Fuga, nostrum
+                                        aperiam? reiciendis provident fuga?
+                                    </div>
                                 </div>
                                 <div class="btn-readmore">
                                     <a href="#"
@@ -311,132 +208,36 @@
                                     ></a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail background-cover">
-                                <img src="./assets/newNFT.png" alt="" />
-                            </div>
-                            <div class="item-content">
-                                <div class="content_info">
-                                    <span class="flag">NFT</span>
-                                    <span class="time">5 min read</span>
-                                </div>
-                                <div class="title text-hide">New NFT projects to watch: December 2022</div>
-                                <div class="content text-hide">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta
-                                    mollitia quam rerum debitis aliquam consequatur enim tempora, sed quasi
-                                    numquam maxime et aspernatur illo, pariatur vel neque. Fuga, nostrum
-                                    aperiam? reiciendis provident fuga?
-                                </div>
-                                <div class="btn-readmore">
-                                    <a href="#"
-                                        >Read more <span><i class="fa-solid fa-chevron-right"></i></span
-                                    ></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail background-cover">
-                                <img src="./assets/abeginner.png" alt="" />
-                            </div>
-                            <div class="item-content">
-                                <div class="content_info">
-                                    <span class="flag">Englinnerling</span>
-                                    <span class="time">5 min read</span>
-                                </div>
-                                <div class="title text-hide">
-                                    What is a Decentralized Autonomous Organization?
-                                </div>
-                                <div class="content text-hide">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta
-                                    mollitia quam rerum debitis aliquam consequatur enim tempora, sed quasi
-                                    numquam maxime et aspernatur illo, pariatur vel neque. Fuga, nostrum
-                                    aperiam? reiciendis provident fuga?
-                                </div>
-                                <div class="btn-readmore">
-                                    <a href="#"
-                                        >Read more <span><i class="fa-solid fa-chevron-right"></i></span
-                                    ></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail background-cover">
-                                <img src="./assets/abeginner.png" alt="" />
-                            </div>
-                            <div class="item-content">
-                                <div class="content_info">
-                                    <span class="flag">Crypto</span>
-                                    <span class="time">5 min read</span>
-                                </div>
-                                <div class="title text-hide">Crypto state of play: September 2022</div>
-                                <div class="content text-hide">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta
-                                    mollitia quam rerum debitis aliquam consequatur enim tempora, sed quasi
-                                    numquam maxime et aspernatur illo, pariatur vel neque. Fuga, nostrum
-                                    aperiam? reiciendis provident fuga?
-                                </div>
-                                <div class="btn-readmore">
-                                    <a href="#"
-                                        >Read more <span><i class="fa-solid fa-chevron-right"></i></span
-                                    ></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumbnail background-cover">
-                                <img src="./assets/abeginner.png" alt="" />
-                            </div>
-                            <div class="item-content">
-                                <div class="content_info">
-                                    <span class="flag">Blockchanin</span>
-                                    <span class="time">5 min read</span>
-                                </div>
-                                <div class="title text-hide">
-                                    Guide to buy cryptocurrency safly: September 2022
-                                </div>
-                                <div class="content text-hide">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta
-                                    mollitia quam rerum debitis aliquam consequatur enim tempora, sed quasi
-                                    numquam maxime et aspernatur illo, pariatur vel neque. Fuga, nostrum
-                                    aperiam? reiciendis provident fuga? Lorem ipsum dolor sit amet,
-                                    consectetur adipisicing elit. Soluta mollitia quam rerum debitis aliquam
-                                    consequatur enim tempora, sed quasi numquam maxime et aspernatur illo,
-                                    pariatur vel neque. Fuga, nostrum aperiam? reiciendis provident fuga?
-                                </div>
-                                <div class="btn-readmore">
-                                    <a href="#"
-                                        >Read more <span><i class="fa-solid fa-chevron-right"></i></span
-                                    ></a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="pagination">
-        <div class="container">
-            <div class="wrapper">
-                <div class="page">
-                    <ul class="listPage">
-                        <li>
-                            <a><i class="fa-solid fa-angle-left"></i></a>
-                        </li>
-                        <li class="active-page">1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>
-                            <a><i class="fa-solid fa-angle-right"></i></a>
-                        </li>
-                    </ul>
+    @if($dataRelatedPosts->count() > 0)
+        <div class="pagination">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="page">
+                        <ul class="listPage">
+                            <li>
+                                <a><i class="fa-solid fa-angle-left"></i></a>
+                            </li>
+                            <li class="active-page">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                            <li>
+                                <a><i class="fa-solid fa-angle-right"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
+
 </main>
 
 @endsection

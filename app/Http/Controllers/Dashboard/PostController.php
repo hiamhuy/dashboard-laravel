@@ -15,9 +15,10 @@ class PostController extends Controller
     //
     public function index(Request $request){
         if($request->has('searchData')){
-            $data = Posts::where('name','LIKE','%'.$request->searchData.'%')->paginate(5);
+            $data = Posts::where('name','LIKE','%'.$request->searchData.'%')
+            ->orderBy('created_at','DESC')->paginate(5);
         }else{
-            $data = Posts::orderBy('created_at')->paginate(5);
+            $data = Posts::orderBy('created_at','DESC')->paginate(5);
         }
 
         $type = CategoryPosts::all();
@@ -31,7 +32,7 @@ class PostController extends Controller
     }
     public function create(){
         $data = [];
-        $type = CategoryPosts::where('isActive','=','1')->orderBy('id')->paginate(50);
+        $type = CategoryPosts::take(50)->get();
         return view('app.post.create-or-edit', compact('data',"type"));
     }
     
@@ -57,7 +58,7 @@ class PostController extends Controller
 
     public function edit($id){
         $data = Posts::find($id);
-        $type = CategoryPosts::where('isActive','=','1')->orderBy('id')->paginate(50);
+        $type = CategoryPosts::take(50)->get();
         return view('app.post.create-or-edit', compact('data','type'));
     }
 

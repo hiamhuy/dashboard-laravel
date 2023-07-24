@@ -24,16 +24,12 @@ if (image != null && thumbpreview != undefined) {
     image.addEventListener("change", (e) => {
         if (e.target.files && e.target.files.length > 0) {
             const getSizeImage = e.target.files[0].size;
-            if (getSizeImage > 1024 * 1024) {
-                alert("Chỉ cho phép tải tệp tin nhỏ hơn 1MB");
-            } else {
-                var nameFile = e.target.files[0].name;
-                const reader = new FileReader();
-                reader.addEventListener("load", (e) => {
-                    thumbpreview.src = e.target.result;
-                });
-                reader.readAsDataURL(e.target.files[0]);
-            }
+            var nameFile = e.target.files[0].name;
+            const reader = new FileReader();
+            reader.addEventListener("load", (e) => {
+                thumbpreview.src = e.target.result;
+            });
+            reader.readAsDataURL(e.target.files[0]);
         }
     });
 }

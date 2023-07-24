@@ -51,4 +51,7 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
 Auth::routes();
 
 Route::get('/blog',[BlogController::class,'index']) -> name('blog');
-Route::get('/blog/{slug}',[BlogController::class,'getBlogDetail']) -> name('blog.detail');
+
+Route::get('/blog/{slug}',[BlogController::class,'getBlogDetail']) -> name('blog.detail.slug');
+
+Route::get('/blog/{categoryId}',[BlogController::class,'getItemByCategory']) -> name('blog.category.search');

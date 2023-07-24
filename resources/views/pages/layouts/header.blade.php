@@ -6,7 +6,7 @@
             <li><a href="#">Các sản phẩm</a></li>
             <li><a href="#">Dịch vụ</a></li>
             <li><a href="#">Về chúng tôi</a></li>
-            <li><a href="#">Liên hệ</a></li>
+            <li><a href="#form-contact">Liên hệ</a></li>
         </ul>
     </div>
 </aside>
@@ -163,7 +163,7 @@
                     <div class="swiper-slide">
                         <div class="bg-info">
                             <div class="thumb-bg object-cover">
-                                <img src="./assets/background-blog.png" alt="" />
+                                <img src="{{ asset('assets/slider/background-blog.png') }}" alt="" />
                             </div>
                             <div class="text-bg">
                                 <p class="text text-content text-info">Thông tin</p>
@@ -185,7 +185,7 @@
                     <div class="swiper-slide">
                         <div class="bg-info">
                             <div class="thumb-bg object-cover">
-                                <img src="./assets/backgroundbanner2.png" alt="" />
+                                <img src="{{ asset('assets/slider/backgroundbanner2.png') }}" alt="" />
                             </div>
                             <div class="position-text">
                                 <p class="text text-content tx-title">Your passport to the web3 economy</p>
@@ -214,11 +214,9 @@
                     <div class="tabs">
                         <ul>
                             <li class="tab active"><a href="#">Tất cả</a></li>
-                            <li class="tab"><a href="#">Crypto</a></li>
-                            <li class="tab"><a href="#">Blockchain</a></li>
-                            <li class="tab"><a href="#">Lộ trình</a></li>
-                            <li class="tab"><a href="#">Tin tức</a></li>
-                            <li class="tab"><a href="#">Phát triển</a></li>
+                            @foreach($arrCategory as $item)
+                            <li class="tab"><a href="#">{{ $item->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
