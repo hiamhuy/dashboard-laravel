@@ -50,8 +50,16 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
 });
 Auth::routes();
 
-Route::get('/blog',[BlogController::class,'index']) -> name('blog');
+Route::middleware('web')->group( function (){
+    Route::get('/blog',[BlogController::class,'index']) -> name('blog');
 
-Route::get('/blog/{slug}',[BlogController::class,'getBlogDetail']) -> name('blog.detail.slug');
+    Route::get('/about-us',[BlogController::class,'aboutUs']) -> name('aboutus');
 
-Route::get('/blog/{categoryId}',[BlogController::class,'getItemByCategory']) -> name('blog.category.search');
+    Route::get('/get-data/{skip}{take}',[BlogController::class,'getItemGrid']);
+    
+    Route::get('/contact',[BlogController::class,'contact']) -> name('contact');
+    
+    Route::get('/blog/{slug}',[BlogController::class,'getBlogDetail']) -> name('blog.detail.slug');
+    
+    Route::get('/blog/{categoryId}',[BlogController::class,'getItemByCategory']) -> name('blog.category.search');
+});

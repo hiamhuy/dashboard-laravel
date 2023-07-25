@@ -2,11 +2,11 @@
     <span class="close btn-close"><i class="fa-solid fa-xmark"></i> </span>
     <div class="menu">
         <ul>
-            <li><a href="#">Trang chủ</a></li>
-            <li><a href="#">Các sản phẩm</a></li>
-            <li><a href="#">Dịch vụ</a></li>
-            <li><a href="#">Về chúng tôi</a></li>
-            <li><a href="#form-contact">Liên hệ</a></li>
+            <li><a href="{{ route('blog') }}">Trang chủ</a></li>
+            <li><a href="{{ route('blog') }}">Các sản phẩm</a></li>
+            <li><a href="{{ route('blog') }}">Dịch vụ</a></li>
+            <li><a href="{{ route('aboutus') }}">Về chúng tôi</a></li>
+            <li><a href="{{ route('contact') }}">Liên hệ</a></li>
         </ul>
     </div>
 </aside>
@@ -16,7 +16,8 @@
         <div class="wrapper">
             <div class="header-nav">
                 <div class="logo">
-                    <svg
+                    <a href="{{ route('blog') }}">
+                        <svg
                         width="274"
                         height="54"
                         viewBox="0 0 274 54"
@@ -135,15 +136,16 @@
                             </clipPath>
                         </defs>
                     </svg>
+                    </a>
                 </div>
                 <div class="nav_menu mobile-hide">
                     <div class="menu">
                         <ul>
-                            <li><a href="#">Trang chủ</a></li>
-                            <li><a href="#">Các sản phẩm</a></li>
-                            <li><a href="#">Dịch vụ</a></li>
-                            <li><a href="#">Về chúng tôi</a></li>
-                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="{{ route('blog') }}">Trang chủ</a></li>
+                            <li><a href="{{ route('blog') }}">Các sản phẩm</a></li>
+                            <li><a href="{{ route('blog') }}">Dịch vụ</a></li>
+                            <li><a href="{{ route('aboutus') }}">Về chúng tôi</a></li>
+                            <li><a href="{{ route('contact') }}">Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -213,10 +215,12 @@
                 <div class="menu-tabs">
                     <div class="tabs">
                         <ul>
-                            <li class="tab active"><a href="#">Tất cả</a></li>
-                            @foreach($arrCategory as $item)
-                            <li class="tab"><a href="#">{{ $item->name }}</a></li>
-                            @endforeach
+                            @if(isset($arrCategory) && $arrCategory->count() > 0)
+                                <li class="tab active"><a href="#">Tất cả</a></li>
+                                @foreach($arrCategory as $item)
+                                <li class="tab"><a href="{{ route('blog.category.search',$item->id) }}">{{ $item->name }}</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>

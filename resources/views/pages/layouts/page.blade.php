@@ -25,6 +25,9 @@
 			referrerpolicy="no-referrer"
 		/>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+		<link rel="stylesheet" href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css">
+		
 		<link href="{{ asset('css/page/page.css') }}" rel="stylesheet" />
 	</head>
 	<body>	
@@ -46,6 +49,7 @@
             <div class="overlay desktop-hide"></div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+		<script src="{{ asset('js/page/loading-data.js') }}"></script>
 		<script src="{{ asset('js/page/page.js') }}"></script>
 	</body>
 </html>

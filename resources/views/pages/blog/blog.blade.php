@@ -7,36 +7,7 @@
     <div class="tabs-content">
         <div class="container">
             <div class="wrapper">
-                <div id="Tatca" class="tab-content">
-                    @foreach($getNewItem as $item)
-                        <div class="thumb background-cover">
-                            <img src="{{ asset('storage/post/'.$item->image) }}" alt="" />
-                        </div>
-                        <div class="content-text">
-                            <div class="content">
-                                <div class="content_info">
-                                    <span class="flag">{{ $item->name_category }}</span>
-                                    <span class="time"> {{ $item->created_at->diffForHumans() }}</span>
-                                </div>
-                                <div class="content_title">
-                                    <h2 class="title text-hide">{{ $item->name }}</h2>
-                                    <p class="content text-hide">
-                                            If you've raed this far and you're wondering what "web3" is exactly,
-                                            this is one of those need-to-knows, and it's pretty simple.We'll explain
-                                            more below, but in short web3 is the next era of the internet in which
-                                            blockchain technology will play a cental role
-                                    </p>
-                                </div>
-                                <div class="btn-readmore">
-                                    <a href="{{ route('blog.detail.slug',$item->slug) }}">Read more <span>
-                                        <i class="fa-solid fa-chevron-right">
-                                        </i>
-                                        </span
-                                    ></a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                <div id="card_one_content" class="tab-content">
                 </div>
             </div>
         </div>
@@ -62,36 +33,8 @@
         <div class="container">
             <div class="wrapper">
                 <div class="card-item">
-                    <div class="items">
-                        @foreach($getItemCardOne as $item)
-                            <div class="item">
-                                <div class="thumbnail background-cover">
-                                    <img src="{{ asset('storage/post/'.$item->image) }}" alt="" />
-                                </div>
-                                <div class="item-content">
-                                    <div class="content_info">
-                                        <span class="flag">{{ $item->name_category }}</span>
-                                        <span class="time">
-                                           {{ $item->created_at->diffForHumans() }}
-                                        </span>
-                                    </div>
-                                    <h2 class="title text-hide">
-                                        {{ $item->name }}
-                                    </h2>
-                                    <h4 class="content text-hide">
-                                       {{ $item->title }}
-                                    </h4>
-                                </div>
-                                <div class="btn-readmore">
-                                    <a href="{{ route('blog.detail.slug',$item->slug) }}">
-                                        Read more 
-                                        <span>
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
+                    <div class="items" id="grid_data_1">
+                        
                     </div>
                 </div>
             </div>
@@ -129,33 +72,9 @@
         <div class="container">
             <div class="wrapper">
                 <div class="card-item">
-                    <div class="items">
-                        @foreach($getItemCardTwo as $item)
-                            <div class="item">
-                                <div class="thumbnail background-cover">
-                                    <img src="{{ asset('storage/post/'.$item->image) }}" alt="" />
-                                </div>
-                                <div class="item-content">
-                                    <div class="content_info">
-                                        <span class="flag">{{ $item->name_category }}</span>
-                                        <span class="time"> {{ $item->created_at->diffForHumans() }}</span>
-                                    </div>
-                                    <h2 class="title text-hide">
-                                        {{ $item->name }}
-                                    </h2>
-                                    <h4 class="content text-hide">
-                                        {{ $item->title }}
-                                    </h4>
-                                </div>
-                                <div class="btn-readmore">
-                                    <a href="{{ route('blog.detail.slug',$item->slug) }}">Read more 
-                                        <span>
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
+                    <div class="items" id="grid_data_2">
+                       
+                           
                     </div>
                 </div>
             </div>
