@@ -51,6 +51,9 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
 Auth::routes();
 
 Route::middleware('web')->group( function (){
+    Route::get('/web/login',[BlogController::class,'index']) -> name('web.login');
+    Route::get('/web/register',[BlogController::class,'index']) -> name('web.register');
+
     Route::get('/blog',[BlogController::class,'index']) -> name('blog');
 
     Route::get('/about-us',[BlogController::class,'aboutUs']) -> name('aboutus');

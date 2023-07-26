@@ -3,10 +3,10 @@
     <div class="menu">
         <ul>
             <li><a href="{{ route('blog') }}">Trang chủ</a></li>
-            <li><a href="{{ route('blog') }}">Các sản phẩm</a></li>
-            <li><a href="{{ route('blog') }}">Dịch vụ</a></li>
+            <li><a href="{{ route('blog') }}">Tin tức</a></li>
             <li><a href="{{ route('aboutus') }}">Về chúng tôi</a></li>
             <li><a href="{{ route('contact') }}">Liên hệ</a></li>
+            <li><a href="{{ route('contact') }}">Đăng nhập <i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
         </ul>
     </div>
 </aside>
@@ -142,10 +142,10 @@
                     <div class="menu">
                         <ul>
                             <li><a href="{{ route('blog') }}">Trang chủ</a></li>
-                            <li><a href="{{ route('blog') }}">Các sản phẩm</a></li>
-                            <li><a href="{{ route('blog') }}">Dịch vụ</a></li>
+                            <li><a href="{{ route('blog') }}">Tin tức</a></li>
                             <li><a href="{{ route('aboutus') }}">Về chúng tôi</a></li>
                             <li><a href="{{ route('contact') }}">Liên hệ</a></li>
+                            <li><a href="{{ route('contact') }}"><i class="fa-regular fa-user"></i></a></li>
                         </ul>
                     </div>
                 </div>

@@ -33,6 +33,8 @@ class PostRepository extends BaseRepository
 
     public function getRelatedPosts($categoryId, $id){
         $arrItem = Posts::where('category','=',$categoryId)
+                    ->where('status','=', '1')
+                    
                     ->join('category_posts','posts.category','=','category_posts.id')
                     ->select('posts.*','category_posts.name as name_category')
 
@@ -48,7 +50,8 @@ class PostRepository extends BaseRepository
     }
 
     public function getItems($skip=0, $take){
-        $arrItem = Posts::join('category_posts','posts.category','=','category_posts.id')
+        $arrItem = Posts::where('status','=', '1')
+                        ->join('category_posts','posts.category','=','category_posts.id')
                         ->select('posts.*','category_posts.name as name_category')
                         ->orderBy('created_at','DESC')->skip($skip)->take($take)
                         ->get();

@@ -2,6 +2,7 @@
 * {
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth;
 }
 :root {
     --color-button: #b91e1e;
@@ -110,7 +111,7 @@ a {
 .header-main .bg-info {
     position: relative;
     height: 500px;
-    top: 20px;
+    /* top: 20px; */
 }
 .header-main .text-content {
     position: relative;
@@ -1005,6 +1006,105 @@ header hr {
 #card_one_content .ph-picture {
     height: 140px;
 }
+
+#contact footer .footer-info {
+    display: none;
+}
+
+/* ============================== */
+/* COMMENT */
+.comment-wrapper .box-wrapper {
+    padding-bottom: 20px;
+    padding-top: 10px;
+    border-bottom: 1px solid #eae9e9db;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 650px;
+}
+
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #df7272 #ffffff;
+}
+
+*::-webkit-scrollbar {
+    width: 11px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #df7272;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+}
+.comment-wrapper .commnent-body {
+    padding-top: 20px;
+}
+.comment-wrapper .commnent-body .show-all-cmt {
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+.comment-wrapper .commnent-body .show-all-cmt a {
+    color: #000000;
+    font-weight: 600;
+}
+.comment-wrapper .box-fm-cmt-body {
+    background-color: rgba(250, 250, 250, 1);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+}
+.box-fm-cmt-body .fm-box-cmt {
+    position: relative;
+    width: 100%;
+}
+
+.comment-wrapper .commnent-body input.comment {
+    position: relative;
+    padding: 20px 50px 20px 20px;
+    outline: 0;
+    font-size: 16px;
+    border: 1px solid #d8d7d7db;
+    border-radius: 10px;
+}
+
+.comment-wrapper .commnent-body button {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 10px;
+    top: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b1afaf30;
+    transition: all 0.3s ease-in-out;
+}
+.comment-wrapper .commnent-body button img {
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+    transition: all 0.3s ease-in-out;
+}
+.comment-wrapper .commnent-body button:hover {
+    background-color: #de606093;
+    transition: all 0.3s ease-in-out;
+}
+.comment-wrapper .commnent-body button:hover img {
+    filter: brightness(0) invert(1);
+    -webkit-filter: brightness(0) invert(1);
+    transition: all 0.3s ease-in-out;
+}
+/* ================================= */
 
 @keyframes animation {
     from {

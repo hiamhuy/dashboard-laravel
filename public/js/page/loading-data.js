@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if ("IntersectionObserver" in window) {
-        card_one_content.innerHTML = make_skeleton("card", 1);
+        if (card_one_content != null && card_one_content != undefined) {
+            card_one_content.innerHTML = make_skeleton("card", 1);
+        }
         setTimeout(function () {
             load_content();
         }, 1000);
@@ -34,9 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         });
-        observer.observe(grid_data_1);
-        observer.observe(grid_data_2);
-    } else {
+        if (grid_data_1 != null && grid_data_1 != undefined) {
+            observer.observe(grid_data_1);
+        }
+        if (grid_data_2 != null && grid_data_2 != undefined) {
+            observer.observe(grid_data_2);
+        }
     }
 });
 
@@ -100,7 +105,9 @@ function make_skeleton(type, count) {
 
 function load_content() {
     const tab_content = document.querySelector("#card_one_content");
-    tab_content.classList.add("tab-content");
+    if (tab_content != null && tab_content != undefined) {
+        tab_content.classList.add("tab-content");
+    }
     var skip = 0;
     var take = 1;
     $.ajax({
