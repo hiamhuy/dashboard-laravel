@@ -35,6 +35,35 @@
                             </a>
                         </div>
                     </li>
+                    <li class="has-child {{ request()->is('dashboard/he-thong*')?'active':'' }}">
+                        <div class="name-link">
+                            <a href="javascript:void(0)">
+                                <span><i class="fa-solid fa-gears"></i></span>
+                                <span class="text">Hệ thống</span>
+                            </a>
+                            <span class="icon"><i class="fa-solid fa-angle-down"></i></span>
+                        </div>
+                        <ul class="child-link">
+                            <li class="{{ request()->is('dashboard/he-thong/user*')?'active-child':'' }}">
+                                <a href="{{ route('system.user') }}">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span>Người dùng</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->is('dashboard/he-thong/role*')?'active-child':'' }}">
+                                <a href="{{ route('system.role') }}">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span>Role</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->is('dashboard/he-thong/permission*')?'active-child':'' }}">
+                                <a href="{{ route('system.permission') }}">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span>Permission</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

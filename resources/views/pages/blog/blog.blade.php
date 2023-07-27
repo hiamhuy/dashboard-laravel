@@ -16,9 +16,9 @@
         <div class="container">
             <div class="wrapper">
                 <div class="banner-info">
-                    <div class="name-company">
+                    <h3 class="name-company">
                         Công ty công nghệ <span class="tName-Company">Hachitech Solution</span>
-                    </div>
+                    </h3>
                     <div class="info-company">
                         Chúng tôi là công ty chuyên gia công nghệ hàng đầu cung cấp các dịch vụ Phần mềm/
                         Phát triển website/Outsource cao cấp và tối ưu hóa các giải pháp quảng cáo đa nền
@@ -48,10 +48,10 @@
                         <img src="{{ asset('assets/blog-detail.png') }}" alt="" />
                     </div>
                     <div class="content-ban">
-                        <div class="title-banner">
+                        <h3 class="title-banner">
                             <span class="tName-Company">Hachitech Solution</span> cung cấp giải pháp phát
                             triển phần mềm
-                        </div>
+                        </h3>
                         <div class="content-banner">
                             Hidemium giúp bạn tạo một số lượng lớn hồ sơ và mỗi hồ sơ sẽ có dấu vân tay kỹ
                             thuật số riêng. Các hồ sơ này không trùng lặp với nhau, vì vậy các trang web sẽ

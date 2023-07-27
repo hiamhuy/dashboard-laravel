@@ -64,6 +64,6 @@ if (backtotop != null && backtotop != undefined) {
             } else {
                 window.clearInterval(scrollToTop);
             }
-        }, 4);
+        }, 1);
     });
 }

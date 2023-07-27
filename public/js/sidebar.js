@@ -37,3 +37,12 @@ document.addEventListener("click", (e) => {
         classAction.classList.remove("active");
     }
 });
+
+const has_child = document.querySelectorAll(".has-child");
+if (has_child != null || has_child != undefined) {
+    has_child.forEach((nav) => {
+        nav.addEventListener("click", () => {
+            nav.classList.toggle("active");
+        });
+    });
+}

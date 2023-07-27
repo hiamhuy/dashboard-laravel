@@ -10,7 +10,7 @@
 </head>
 <body>
     <main class='social'>
-        <a href='blog' class='social-link'><i class="fa-brands fa-sellcast"></i>Website</a>
+        <a href='{{ route('blog') }}' class='social-link'><i class="fa-brands fa-sellcast"></i>Website</a>
         <a href='dashboard' class='social-link'><i class="fa-solid fa-user-tie"></i> Dashboard</a>
       </main>
 </body>

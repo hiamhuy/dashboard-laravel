@@ -1,15 +1,18 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Page\BlogController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\PostController;
+use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\NavigationPageController;
+use App\Http\Controllers\Dashboard\RolesController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\AccountInfoController;
-use App\Http\Controllers\Page\BlogController;
 
 
 Route::get('/',[NavigationPageController::class,'index'])->name('navigation-page');
@@ -43,6 +46,28 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
 
         Route::delete('/delete/{id}', [PostController::class,'delete'])->name('post.delete');
     });
+    Route::prefix('/he-thong')->group(function(){
+        Route::prefix('/user')->group(function(){
+            Route::get('/', [UserController::class,'index'])->name('system.user');
+
+
+        });
+
+        Route::prefix('/role')->group(function(){
+            Route::get('/', [RolesController::class,'index'])->name('system.role');
+            
+            Route::get('/create/0', [RolesController::class,'create'])->name('post.create');
+            Route::post('/insert', [RolesController::class,'insert'])->name('post.insert');
+
+        });
+
+        Route::prefix('/permission')->group(function(){
+            Route::get('/', [PermissionController::class,'index'])->name('system.permission');
+
+
+        });
+
+    });
 
     Route::get('/account-info', [AccountInfoController::class, 'index'])->name('account.info');
     Route::post('/account-info/edit/{id}', [AccountInfoController::class, 'edit'])->name('edit');
@@ -51,18 +76,16 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
 Auth::routes();
 
 Route::middleware('web')->group( function (){
-    Route::get('/web/login',[BlogController::class,'index']) -> name('web.login');
-    Route::get('/web/register',[BlogController::class,'index']) -> name('web.register');
 
-    Route::get('/blog',[BlogController::class,'index']) -> name('blog');
+    Route::get('/web/blog',[BlogController::class,'index']) -> name('blog');
 
-    Route::get('/about-us',[BlogController::class,'aboutUs']) -> name('aboutus');
+    Route::get('/web/about-us',[BlogController::class,'aboutUs']) -> name('aboutus');
 
     Route::get('/get-data/{skip}{take}',[BlogController::class,'getItemGrid']);
     
-    Route::get('/contact',[BlogController::class,'contact']) -> name('contact');
+    Route::get('/web/contact',[BlogController::class,'contact']) -> name('contact');
     
-    Route::get('/blog/{slug}',[BlogController::class,'getBlogDetail']) -> name('blog.detail.slug');
+    Route::get('/web/blog/{slug}',[BlogController::class,'getBlogDetail']) -> name('blog.detail.slug');
     
-    Route::get('/blog/{categoryId}',[BlogController::class,'getItemByCategory']) -> name('blog.category.search');
+    Route::get('/web/blog/{categoryId}',[BlogController::class,'getItemByCategory']) -> name('blog.category.search');
 });

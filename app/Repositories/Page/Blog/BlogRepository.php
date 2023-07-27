@@ -7,13 +7,12 @@ use Carbon\Carbon;
 use App\Repositories\Page\Blog\BlogInterface;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 
-class BlogRepository
+class BlogRepository implements BlogInterface
 {
     public $post;
     public function __construct(PostRepository $post)
     {
         Carbon::setLocale('vi');
-        // parent::__construct();
         $this->post = $post;
     }
 

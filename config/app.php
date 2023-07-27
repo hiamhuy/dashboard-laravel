@@ -174,8 +174,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\RepositoryServiceProvider::class,
         
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        'Barryvdh\Debugbar\ServiceProvider',
 
     ],
 
@@ -233,6 +236,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',
 
     ],
 

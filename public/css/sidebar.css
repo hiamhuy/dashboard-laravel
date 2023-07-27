@@ -190,6 +190,7 @@ a {
 #sidebar .item-link li {
     transform: translateX(0);
     transition: all 0.3s ease-in-out;
+    margin-bottom: 10px;
 }
 #sidebar .item-link li:hover {
     transform: translateX(5px);

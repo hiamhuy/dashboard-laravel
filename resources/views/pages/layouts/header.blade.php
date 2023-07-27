@@ -6,7 +6,11 @@
             <li><a href="{{ route('blog') }}">Tin tức</a></li>
             <li><a href="{{ route('aboutus') }}">Về chúng tôi</a></li>
             <li><a href="{{ route('contact') }}">Liên hệ</a></li>
-            <li><a href="{{ route('contact') }}">Đăng nhập <i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+            <li>
+                <a href="#" data-mdb-toggle="modal" data-mdb-target="#login-and-register">
+                    Đăng nhập <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>
@@ -145,7 +149,12 @@
                             <li><a href="{{ route('blog') }}">Tin tức</a></li>
                             <li><a href="{{ route('aboutus') }}">Về chúng tôi</a></li>
                             <li><a href="{{ route('contact') }}">Liên hệ</a></li>
-                            <li><a href="{{ route('contact') }}"><i class="fa-regular fa-user"></i></a></li>
+                            <li>
+                                <a href="#" data-mdb-toggle="modal" data-mdb-target="#login-and-register" data-mdb-toggle="tooltip" title="Đăng nhập">
+                                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                                    {{-- <i class="fa-regular fa-user"></i> --}}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -168,10 +177,10 @@
                                 <img src="{{ asset('assets/slider/background-blog.png') }}" alt="" />
                             </div>
                             <div class="text-bg">
-                                <p class="text text-content text-info">Thông tin</p>
-                                <p class="text text-content text-nameComp">
+                                <h2 class="text text-content">Thông tin</h2>
+                                <h1 class="text text-content text-nameComp">
                                     Công ty công nghệ Hachitech Solution
-                                </p>
+                                </h1>
                                 <p class="text text-content text-infoComp">
                                     Chúng tôi là công ty chuyên gia công nghệ hàng đầu cung cấp các dịch vụ
                                     Phần mềm/<br />
@@ -179,7 +188,7 @@
                                     nền tảng.
                                 </p>
                                 <div class="button-shownow">
-                                    <a href="#">Xem ngay</a>
+                                    <a href="{{ route('aboutus') }}">Xem ngay</a>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +199,7 @@
                                 <img src="{{ asset('assets/slider/backgroundbanner2.png') }}" alt="" />
                             </div>
                             <div class="position-text">
-                                <p class="text text-content tx-title">Your passport to the web3 economy</p>
+                                <h1 class="text text-content tx-title">Your passport to the web3 economy</h1>
                                 <p class="text text-content tx-content">
                                     If you've read this far and you're wondering what “web3” is exactly,
                                     this is one of those need-to-knows, and it's pretty simple. We’ll
@@ -209,22 +218,180 @@
             </div>
         </div>
     </div>
+    @if(isset($arrCategory) && $arrCategory->count() > 0)
     <div class="tab-wrapper">
         <div class="container">
             <div class="wrapper">
                 <div class="menu-tabs">
                     <div class="tabs">
                         <ul>
-                            @if(isset($arrCategory) && $arrCategory->count() > 0)
-                                <li class="tab active"><a href="#">Tất cả</a></li>
-                                @foreach($arrCategory as $item)
-                                <li class="tab"><a href="{{ route('blog.category.search',$item->id) }}">{{ $item->name }}</a></li>
-                                @endforeach
-                            @endif
+                            <li class="tab active"><a href="#">Tất cả</a></li>
+                            @foreach($arrCategory as $item)
+                            <li class="tab"><a href="{{ route('blog.category.search',$item->id) }}">{{ $item->name }}</a></li>
+                            @endforeach
+                          
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @endif
+
+    <!-- Modal -->
+    <div class="modal fade" id="login-and-register" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                  <!-- Tabs navs -->
+                    <ul class="nav nav-tabs nav-fill mb-3" id="form-login" role="tablist">
+                        <li class="nav-item" role="presentation">
+                        <a
+                            class="nav-link active"
+                            id="tab-login"
+                            data-mdb-toggle="tab"
+                            href="#tabs-login"
+                            role="tab"
+                            aria-controls="tabs-login"
+                            aria-selected="true"
+                            >Đăng nhập</a
+                        >
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a
+                                class="nav-link"
+                                id="tab-register"
+                                data-mdb-toggle="tab"
+                                href="#tabs-register"
+                                role="tab"
+                                aria-controls="tabs-register"
+                                aria-selected="false"
+                                >Đăng ký</a
+                            >
+                        </li>
+                    </ul>
+                    <!-- Tabs navs -->
+                    
+                    <!-- Tabs content -->
+                    <div class="tab-modal-content" id="tab-content">
+                        <div class="tab-pane fade show active" id="tabs-login"
+                        role="tabpanel" aria-labelledby="tab-login">
+                            <form method="POST" action="#">
+                                @csrf
+            
+                                <div class="row mb-3 login-form-group">
+                                    <label for="email" class="col-form-label">{{ __('login.email_address',[],'vi') }}</label>
+                                    <div>
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+            
+                                <div class="row mb-3 login-form-group">
+                                    <label for="password" class="col-form-label">{{ __('login.password',[],'vi') }}</label>
+                                    <div>
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-2">
+                                    <div class="login-form-group d-flex justify-content-between">
+                                        <div class="custom-check">
+                                            <input autocomplete="off" name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }} id="remember">
+                                            <label class="p-1" for="remember">{{ __('login.remember_me',[],'vi') }}</label>
+                                        </div>
+            
+                                        @if (Route::has('password.request'))
+                                            <a class="btn btn-link link forgot-link" href="#">
+                                                {{ __('login.forgot_password',[],'vi') }}
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                                    <button type="submit" class="btn btn-primary fix-color rounded-button login-cta">
+                                        {{ __('login.login',[],'vi') }}
+                                    </button>
+                            </form>
+        
+                        </div>
+                        <div class="tab-pane fade" id="tabs-register" role="tabpanel" 
+                        aria-labelledby="tab-register">
+                            <form method="POST" action="#">
+                                @csrf
+                
+                                <div class="row mb-3 login-form-group">
+                                    <label for="name" class="col-form-label">{{ __('login.name',[],'vi') }}</label>
+                
+                                    <div>
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                
+                                <div class="row mb-3 login-form-group">
+                                    <label for="email" class="col-form-label">{{ __('login.email_address',[],'vi') }}</label>
+                
+                                    <div>
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                
+                                <div class="row mb-3 login-form-group">
+                                    <label for="password" class="col-form-label">{{ __('login.password',[],'vi') }}</label>
+                                    <div>
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                
+                                <div class="row mb-3 login-form-group">
+                                    <label for="password-confirm" class="col-form-label">{{ __('login.confirm_password',[],'vi') }}</label>
+                                    <div>
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary fix-color rounded-button login-cta">
+                                        {{ __('login.register',[],'vi') }}
+                                </button>
+                
+                            </form>
+                
+                        </div>
+                    </div>
+                    <!-- Tabs content -->
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn fix-color-cancel btn-secondary" data-mdb-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 </header>

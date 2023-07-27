@@ -142,7 +142,9 @@ function load_content() {
                                 </p>
                             </div>
                             <div class="btn-readmore">
-                                <a href="/blog/${data[0].slug}">Read more <span>
+                                <a href="/web/blog/${
+                                    data[0].slug
+                                }">Read more <span>
                                     <i class="fa-solid fa-chevron-right">
                                     </i>
                                     </span
@@ -192,7 +194,7 @@ function view_grid_data(elementId, data) {
                     </h4>
                 </div>
                 <div class="btn-readmore">
-                    <a href="/blog/${data[i].slug}">
+                    <a href="/web/blog/${data[i].slug}">
                         Read more
                         <span>
                             <i class="fa-solid fa-chevron-right"></i>

@@ -20,10 +20,10 @@
                         <div class="interact-icon">
                             <ul>
                                 <li class="interact-like">
-                                    <span><i class="fa-regular fa-thumbs-up"></i></span>30
+                                    <span><i class="fa-regular fa-thumbs-up"></i></span>0
                                 </li>
                                 <li class="interact-comment">
-                                    <span><i class="fa-regular fa-message"></i></span>30
+                                    <span><i class="fa-regular fa-message"></i></span>0
                                 </li>
                                 <li class="interact-share">
                                     <i class="fa-solid fa-share"></i>
@@ -225,7 +225,7 @@
                                     </div>
                                 </div>
                                 <div class="btn-readmore">
-                                    <a href="#"
+                                    <a href="{{ route('blog.detail.slug',$item->slug) }}"
                                         >Read more <span><i class="fa-solid fa-chevron-right"></i></span
                                     ></a>
                                 </div>
@@ -236,7 +236,7 @@
             </div>
         </div>
     </div>
-    @if($dataRelatedPosts->count() > 0)
+    @if($dataRelatedPosts->count() > 6)
         <div class="pagination">
             <div class="container">
                 <div class="wrapper">

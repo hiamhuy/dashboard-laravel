@@ -8,14 +8,14 @@ use App\Repositories\Dashboard\Post\PostInterface;
 use App\Repositories\Dashboard\Category\CategoryInterface;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 
-class PostRepository extends BaseRepository
+class PostRepository extends BaseRepository implements PostInterface
 {
     
     public $categoryRepository;
 
     public function __construct(CategoryInterface $categoryRepository){
 
-        // parent::__construct();
+        parent::__construct();
         $this->categoryRepository = $categoryRepository;
         
     }

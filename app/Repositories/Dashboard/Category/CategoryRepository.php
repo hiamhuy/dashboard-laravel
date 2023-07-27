@@ -6,7 +6,7 @@ use App\Models\CategoryPosts;
 use App\Repositories\Dashboard\Category\CategoryInterface;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 
-class CategoryRepository extends BaseRepository
+class CategoryRepository extends BaseRepository implements CategoryInterface
 {
    
     public function __construct(){

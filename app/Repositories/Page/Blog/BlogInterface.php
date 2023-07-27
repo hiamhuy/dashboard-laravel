@@ -2,7 +2,8 @@
 
 namespace App\Repositories\Page\Blog;
 
-class BlogInterface
+interface BlogInterface
 {
-    public function getItems(){}
+    public function getItemsPost($skip, $take);
+    public function getItemByCategory($categoryId);
 }

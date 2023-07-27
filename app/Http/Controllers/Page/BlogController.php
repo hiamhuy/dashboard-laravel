@@ -8,33 +8,32 @@ use Illuminate\Http\Request;
 use App\Models\CategoryPosts;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Repositories\Dashboard\Category\CategoryInterface;
 use App\Repositories\Page\Blog\BlogInterface;
-use App\Repositories\Page\Blog\BlogRepository;
-use App\Repositories\Dashboard\Post\PostRepository;
-use App\Repositories\Dashboard\Category\CategoryRepository;
+use App\Repositories\Dashboard\Post\PostInterface;
 
 class BlogController extends Controller
 {
     public $getArrCategory;
-    public $blogRepository;
-    public $categoryRepo;
-    public $postRepo;
+    public $blogInterface;
+    public $categoryInterface;
+    public $postInterface;
     public function __construct(
-        BlogRepository $blogRepository,
-        CategoryRepository $categoryRepo,
-        PostRepository $postRepo
+        BlogInterface $blogInterface,
+        CategoryInterface $categoryInterface,
+        PostInterface $postInterface
     )
     {
         Carbon::setLocale('vi');
         
-        $this->blogRepository = $blogRepository;
-        $this->categoryRepo = $categoryRepo;
-        $this->postRepo = $postRepo;
+        $this->blogInterface = $blogInterface;
+        $this->categoryInterface = $categoryInterface;
+        $this->postInterface = $postInterface;
     }
     //
     public function index()
     {
-        $arrCategory = $this->categoryRepo->getCategoryBlog();
+        $arrCategory = $this->categoryInterface->getCategoryBlog();
 
         return view('pages.blog.blog',compact('arrCategory'));
     }
@@ -42,16 +41,16 @@ class BlogController extends Controller
     public function getItemGrid(){
         $skip = $_GET['skip'];
         $take = $_GET['take'];
-        return $this->blogRepository->getItemsPost($skip,$take);
+        return $this->blogInterface->getItemsPost($skip,$take);
     }
 
     public function getBlogDetail($slug)
     { 
-        $arrCategory = $arrCategory = $this->categoryRepo->getCategoryBlog();
+        $arrCategory = $arrCategory = $this->categoryInterface->getCategoryBlog();
 
-        $data = $this->postRepo->getDataBySlug($slug);
+        $data = $this->postInterface->getDataBySlug($slug);
 
-        $dataRelatedPosts = $this->postRepo->getRelatedPosts($data->category, $data->id);
+        $dataRelatedPosts = $this->postInterface->getRelatedPosts($data->category, $data->id);
 
         return view('pages.blog.blog-detail',compact('arrCategory','data','dataRelatedPosts'));
     }
@@ -59,7 +58,7 @@ class BlogController extends Controller
 
     public function getItemByCategory($search){
         
-        $arrCategory = $arrCategory = $this->categoryRepo->getCategoryBlog();
+        $arrCategory = $arrCategory = $this->categoryInterface->getCategoryBlog();
         return view('pages.blog.blog', compact('arrCategory'));
 
     }

@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Dashboard\Category;
 
-class CategoryInterface
+interface CategoryInterface
 {
-  
+    public function getCategoryBlog();
 }
