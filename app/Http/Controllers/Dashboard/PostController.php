@@ -7,28 +7,24 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CategoryPosts;
 use App\Http\Controllers\Controller;
+use App\Repositories\Dashboard\Post\PostInterface;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PostController extends Controller
 {
+    public $postInterface;
+    public function __construct(PostInterface $postInterface)
+    {
+        $this->postInterface = $postInterface;
+    }
     //
     public function index(Request $request){
-        if($request->has('searchData')){
-            $data = Posts::where('name','LIKE','%'.$request->searchData.'%')
-            ->orderBy('created_at','DESC')->paginate(5);
-        }else{
-            $data = Posts::orderBy('created_at','DESC')->paginate(5);
-        }
-
-        $type = CategoryPosts::all();
-       
-        $title = 'Xóa bản ghi!';
-        $text = "Bạn có chắc chắn muốn xóa bản ghi này?";
-        confirmDelete($title, $text);
         
-        // $data = Posts::all();
-        return view('app.post.index', compact('data','type'));
+        $data = $this->postInterface->getDataView($request);
+        $this->postInterface->notifyDelete();
+        
+        return view('app.post.index', compact('data'));
     }
     public function create(){
         $data = [];

@@ -8,8 +8,10 @@ use App\Repositories\Page\Blog\BlogRepository;
 use App\Repositories\Dashboard\Post\PostInterface;
 use App\Repositories\Dashboard\Post\PostRepository;
 use App\Repositories\Dashboard\System\Role\RoleInterface;
+use App\Repositories\Dashboard\System\User\UserInterface;
 use App\Repositories\Dashboard\Category\CategoryInterface;
 use App\Repositories\Dashboard\System\Role\RoleRepository;
+use App\Repositories\Dashboard\System\User\UserRepository;
 use App\Repositories\Dashboard\Category\CategoryRepository;
 use App\Repositories\Dashboard\System\Permission\PermissionInterface;
 use App\Repositories\Dashboard\System\Permission\PermissionRepository;
@@ -29,6 +31,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PermissionInterface::class, PermissionRepository::class);
         $this->app->bind(CategoryInterface::class, CategoryRepository::class);
         $this->app->bind(PostInterface::class, PostRepository::class);
+        $this->app->bind(UserInterface::class, UserRepository::class);
 
     }
 

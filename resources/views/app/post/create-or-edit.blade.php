@@ -12,7 +12,7 @@ post_type
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/dashboard">Trang chủ</a></li>
               <li class="breadcrumb-item"><a href="/dashboard/post">Danh sách</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
+              <li class="breadcrumb-item active" aria-current="page">{{ $data!=null? 'Chỉnh sửa':'Thêm mới' }}</li>
             </ol>
         </nav>
 

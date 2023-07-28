@@ -42,7 +42,7 @@ category
                                 <th scope="col">Tên kiểu</th>
                                 <th scope="col" style="width:100px">Trạng thái</th>
                                 <th scope="col" style="width:150px">Ngày tạo</th>
-                                <th scope="col" style="width:120px">Hành động</th>
+                                <th scope="col" style="width:120px"></th>
                               </tr>
                             </thead>
                             <tbody>
@@ -60,9 +60,18 @@ category
                                         </td>
                                         <td style="width:150px">{{ $val->created_at->format('d/m/Y')}}</td>
                                         <td style="width:120px">
-                                            <a href="{{ route('category.edit', $val->id) }}">Sửa</a> |
-                                            <a href="{{ route('category.delete', $val->id) }}" data-confirm-delete="true">Xóa</a>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuAction" data-bs-toggle="dropdown" aria-expanded="false">
+                                                  Hành động
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuAction">
+                                                    <a class="dropdown-item" href="{{ route('category.edit', $val->id) }}"><i class="fa-regular fa-pen-to-square"></i> Sửa</a>
+                                                    <a class="dropdown-item" href="{{ route('category.delete', $val->id) }}" data-confirm-delete="true"><i class="fa-regular fa-trash-can"></i> Xóa</a>
+                                                </ul>
+                                            </div>
+                                           
                                         </td>
+
                                       </tr>
                                   @endforeach
 

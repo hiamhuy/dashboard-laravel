@@ -56,14 +56,31 @@ Route::middleware('auth')->prefix('/dashboard')->group(function() {
         Route::prefix('/role')->group(function(){
             Route::get('/', [RolesController::class,'index'])->name('system.role');
             
-            Route::get('/create/0', [RolesController::class,'create'])->name('post.create');
-            Route::post('/insert', [RolesController::class,'insert'])->name('post.insert');
+            Route::get('/create/0', [RolesController::class,'create'])->name('system.role.create');
+            Route::post('/insert', [RolesController::class,'insert'])->name('system.role.insert');
 
+            Route::get('/edit/{id}', [RolesController::class,'edit'])->name('system.role.edit');
+            Route::post('/update/{id}', [RolesController::class,'update'])->name('system.role.update');
+    
+            Route::delete('/delete/{id}', [RolesController::class,'delete'])->name('system.role.delete');
+
+            Route::get('/assign-role/{id}', [RolesController::class,'assign'])->name('system.role.assign');
+            Route::post('/assign-action-role/{id}', [RolesController::class,'assignAction'])->name('system.role.assign.action');
         });
 
         Route::prefix('/permission')->group(function(){
             Route::get('/', [PermissionController::class,'index'])->name('system.permission');
 
+            Route::get('/create/0', [PermissionController::class,'create'])->name('system.permission.create');
+            Route::post('/insert', [PermissionController::class,'insert'])->name('system.permission.insert');
+
+            Route::get('/edit/{id}', [PermissionController::class,'edit'])->name('system.permission.edit');
+            Route::post('/update/{id}', [PermissionController::class,'update'])->name('system.permission.update');
+    
+            Route::delete('/delete/{id}', [PermissionController::class,'delete'])->name('system.permission.delete');
+
+            Route::get('/assign-permission/{id}', [PermissionController::class,'assign'])->name('system.permission.assign');
+            Route::post('/assign-action-permission/{id}', [PermissionController::class,'assignAction'])->name('system.permission.assign.action');
 
         });
 

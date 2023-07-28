@@ -9,7 +9,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-6 d-flex justify-content-start">
-                    <form action="/dashboard/category" method="GET">
+                    <form action="{{ route('system.permission') }}" method="GET">
                         <div class="f-search">
                             <input type="search" name="searchData" class="form-control" id="search-table" placeholder="enter search...">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -17,7 +17,7 @@
                     </form>
                 </div>
                 <div class="col-6 d-flex justify-content-end">
-                    <a href="category/create/0" class="btn btn-primary">
+                    <a href="{{ route('system.permission.create') }}" class="btn btn-primary">
                         <i class="fa-solid fa-plus"></i> Thêm mới
                     </a>
                 </div>
@@ -29,21 +29,39 @@
                         <thead>
                           <tr>
                             <th scope="col" style="width:60px">#</th>
-                            <th scope="col">Tên kiểu</th>
-                            <th scope="col" style="width:100px">Trạng thái</th>
+                            <th scope="col">Tên</th>
                             <th scope="col" style="width:150px">Ngày tạo</th>
-                            <th scope="col" style="width:120px">Hành động</th>
+                            <th scope="col" style="width:120px"></th>
                           </tr>
                         </thead>
                         <tbody>
                             @if($permissions->count() > 0)
                                 @foreach($permissions as $index => $data)
                                     <tr>
-                                        <th style="width:60px" scope="row">{{ $index + $data->firstItem() }}</th>
+                                        <th style="width:60px" scope="row">{{ $index + $permissions->firstItem() }}</th>
                                         <td>{{ $data->name }}</td>
+                                        <td style="width:150px">{{ $data->created_at->format('d/m/Y') }}</td>
                                         <td style="width:120px">
-                                            <a href="">Sửa</a> |
-                                            <a href="" data-confirm-delete="true">Xóa</a>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuAction" data-bs-toggle="dropdown" aria-expanded="false">
+                                                  Hành động
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuAction">
+
+                                                    <a class="dropdown-item" href="{{ route('system.permission.assign', $data->id) }}">
+                                                        <i class="fa-solid fa-gears"></i> Gán vai trò
+                                                    </a>
+
+                                                    <a class="dropdown-item" href="{{ route('system.permission.edit', $data->id) }}">
+                                                        <i class="fa-regular fa-pen-to-square"></i> Sửa
+                                                    </a>
+                                                    <a class="dropdown-item" href="{{ route('system.permission.delete', $data->id) }}" data-confirm-delete="true">
+                                                        <i class="fa-regular fa-trash-can"></i> Xóa
+                                                    </a>
+
+                                                </ul>
+                                            </div>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
